@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://uthu60gykj3"]
+
+[ext_resource type="Script" uid="uid://b8mib8oxq7k2e" path="res://scripts/playerray.gd" id="1_3wogb"]
+
+[node name="RayCast3D" type="RayCast3D"]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("1_3wogb")
+hud_label_path = NodePath("../../CanvasLayer/hudlabel")
+display_time = 2.0

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcs6bhhrsnb8n"]
+
+[ext_resource type="Script" uid="uid://dd2xvf3flkswv" path="res://scripts/standing_enemy.gd" id="1_svblt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0i8y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l1230"]
+radius = 1.0
+
+[node name="StandingEnemy" type="StaticBody3D"]
+script = ExtResource("1_svblt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_i0i8y")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.4, 0)
+radius = 0.1
+height = 0.8
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.4, 0)
+radius = 0.1
+height = 0.8
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901236, 0)
+radius = 0.4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGSphere3D"]
+transform = Transform3D(0.707107, 0, 0.707107, -0.178443, 0.967634, 0.178443, -0.684221, -0.252356, 0.684221, 0, 0.517417, -0.213545)
+size = Vector3(0.3, 0.7, 0.3)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_l1230")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
