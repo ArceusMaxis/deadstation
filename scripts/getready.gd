@@ -6,7 +6,7 @@ var freed = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and Autoload.tutorial_complete:
-		get_tree().change_scene_to_file("res://scenes/getready.tscn")
+		get_tree().change_scene_to_file("res://scenes/townsquare.tscn")
 
 func _physics_process(_delta: float) -> void:
 	if Autoload.tutorial_complete and not freed and is_instance_valid(staticb):

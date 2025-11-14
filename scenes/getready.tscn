@@ -1,6 +1,6 @@
-[gd_scene load_steps=28 format=4 uid="uid://dknmcsdhol55x"]
+[gd_scene load_steps=31 format=4 uid="uid://dknmcsdhol55x"]
 
-[ext_resource type="PackedScene" uid="uid://dq2i3qivclk2d" path="res://scenes/player.tscn" id="1_fo6y7"]
+[ext_resource type="PackedScene" uid="uid://dq2i3qivclk2d" path="res://scenes/introplayer.tscn" id="1_fo6y7"]
 [ext_resource type="Script" uid="uid://1ivsxmcrjg1x" path="res://scripts/getready.gd" id="1_x3ub8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mw8ii"]
@@ -134,6 +134,19 @@ size = Vector3(1, 4.34265, 6.27173)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivnf3"]
 size = Vector3(3.24438, 4.98035, 7.0332)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23bb6"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_x3ub8"]
+material = SubResource("StandardMaterial3D_23bb6")
+radial_segments = 4
+rings = 3
+
+[sub_resource type="Curve" id="Curve_g3hxc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_x3ub8")
@@ -540,6 +553,19 @@ shape = SubResource("BoxShape3D_x3ub8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57771, 1.99017, -1.41602)
 shape = SubResource("BoxShape3D_ivnf3")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+cast_shadow = 0
+amount = 2000
+lifetime = 2.0
+preprocess = 5.0
+mesh = SubResource("SphereMesh_x3ub8")
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 200)
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
+scale_amount_curve = SubResource("Curve_g3hxc")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

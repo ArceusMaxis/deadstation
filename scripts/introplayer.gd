@@ -11,11 +11,8 @@ var mouse_sensitivity = 0.008
 @onready var flashlight: SpotLight3D = $Camera3D/Flashlight
 @onready var animplayer: AnimationPlayer = $AnimationPlayer
 @onready var hudlabel: Label = $CanvasLayer/hudlabel
-@onready var scannermodel: Node3D = $Camera3D/Hand/Scanner
-@onready var flashlightmodel: Node3D = $Camera3D/Hand/Torch
-@onready var flaregunmodel: Node3D = $Camera3D/Hand/FlareGun
 
-@onready var arrow: MeshInstance3D = $arrow
+var tutorial_complete : bool = false
 
 func  _ready() -> void:
 	animplayer.play("headbob")
@@ -24,7 +21,6 @@ func  _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
-	update_arrow_rotation()
 	velocity.y += -gravity * delta
 	var input = Input.get_vector("left", "right", "forward", "back")
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y).normalized()
@@ -48,30 +44,8 @@ func _input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		cam.rotate_x(-event.relative.y * mouse_sensitivity)
 		cam.rotation.x = clampf(cam.rotation.x, -deg_to_rad(70), deg_to_rad(70))
-	if event.is_action_pressed("flashlight") and flashlight and flashlightmodel:
+	if event.is_action_pressed("flashlight"):
 		flashlight.visible = !flashlight.visible
-		flashlightmodel.visible = flashlight.visible
-		if flashlight.visible and scannermodel and flaregunmodel:
-			scannermodel.visible = false
-			flaregunmodel.visible = false
-	if event.is_action_pressed("scanner") and scannermodel:
-		scannermodel.visible = !scannermodel.visible
-		if scannermodel.visible:
-			if flashlight:
-				flashlight.visible = false
-			if flashlightmodel:
-				flashlightmodel.visible = false
-			if flaregunmodel:
-				flaregunmodel.visible = false
-	if event.is_action_pressed("flaregun") and flaregunmodel:
-		flaregunmodel.visible = !flaregunmodel.visible
-		if flaregunmodel.visible:
-			if flashlight:
-				flashlight.visible = false
-			if flashlightmodel:
-				flashlightmodel.visible = false
-			if scannermodel:
-				scannermodel.visible = false
 
 func game_end_ui(win : bool) -> void:
 	if win:
@@ -80,24 +54,3 @@ func game_end_ui(win : bool) -> void:
 	else:
 		losel.visible = true
 		winl.visible = false
-
-func update_arrow_rotation():
-	if not arrow or not scannermodel.visible:
-		return
-	
-	var radios = get_tree().get_nodes_in_group("anradio")
-	print(radios.size())
-	if radios.is_empty():
-		return
-	
-	var closest_radio = null
-	var closest_distance = 200
-	
-	for radio in radios:
-		var distance = arrow.global_position.distance_to(radio.global_position)
-		if distance < closest_distance:
-			closest_distance = distance
-			closest_radio = radio
-	
-	if closest_radio:
-		arrow.look_at(closest_radio.global_transform.origin, Vector3.UP, true)

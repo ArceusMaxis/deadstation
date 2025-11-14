@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dchf2342167ld"]
 
 [ext_resource type="Script" uid="uid://cx20q44kejfts" path="res://scripts/tes_Winarea_3d.gd" id="1_612pj"]
-[ext_resource type="PackedScene" uid="uid://dq2i3qivclk2d" path="res://scenes/player.tscn" id="1_jotil"]
+[ext_resource type="PackedScene" uid="uid://lqlucsvm48x" path="res://scenes/player.tscn" id="1_jotil"]
 [ext_resource type="PackedScene" uid="uid://dcs6bhhrsnb8n" path="res://scenes/standing_enemy.tscn" id="2_44gc5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
@@ -102,9 +102,6 @@ use_collision = true
 size = Vector3(1, 2, 0.5)
 material = SubResource("StandardMaterial3D_612pj")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_jotil")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 8)
-
 [node name="StandingEnemy" parent="." instance=ExtResource("2_44gc5")]
 
 [node name="StandingEnemy2" parent="." instance=ExtResource("2_44gc5")]
@@ -127,5 +124,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.486879, -9.53674e-07, -5.21
 
 [node name="StandingEnemy8" parent="." instance=ExtResource("2_44gc5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37044, -9.53674e-07, 6.78985)
+
+[node name="Player" parent="." instance=ExtResource("1_jotil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25131, 1, 8.39799)
 
 [connection signal="body_entered" from="CSGBox3D/Area3D" to="CSGBox3D/Area3D" method="_on_body_entered"]

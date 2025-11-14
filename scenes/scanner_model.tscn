@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://btpothrytjn0y"]
+
+[ext_resource type="PackedScene" uid="uid://gahtwt1ysh47" path="res://assets/Scanner.blend" id="1_h82yg"]
+
+[node name="Scanner2" instance=ExtResource("1_h82yg")]
+
+[node name="Scanner" parent="." index="0"]
+layers = 3

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c212s0tp4kyx0"]
+
+[ext_resource type="PackedScene" uid="uid://b4gp611ngn53s" path="res://assets/Flashlight.blend" id="1_1e2yy"]
+
+[node name="Flashlight" instance=ExtResource("1_1e2yy")]
+
+[node name="Light" parent="." index="0"]
+visible = false
+
+[node name="Camera" parent="." index="1"]
+visible = false
+
+[node name="Cylinder" parent="." index="2"]
+layers = 3
+
+[node name="Cube" parent="." index="3"]
+layers = 3
