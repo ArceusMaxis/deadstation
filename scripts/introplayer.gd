@@ -44,8 +44,6 @@ func _input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		cam.rotate_x(-event.relative.y * mouse_sensitivity)
 		cam.rotation.x = clampf(cam.rotation.x, -deg_to_rad(70), deg_to_rad(70))
-	if event.is_action_pressed("flashlight"):
-		flashlight.visible = !flashlight.visible
 
 func game_end_ui(win : bool) -> void:
 	if win:

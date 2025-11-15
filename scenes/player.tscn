@@ -1,17 +1,24 @@
-[gd_scene load_steps=18 format=3 uid="uid://lqlucsvm48x"]
+[gd_scene load_steps=25 format=3 uid="uid://lqlucsvm48x"]
 
 [ext_resource type="Script" uid="uid://b1cwrhnaxvid6" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://bj6bst6qjhar5" path="res://scenes/flare.tscn" id="2_smehm"]
 [ext_resource type="PackedScene" uid="uid://dejolgup24v3p" path="res://scenes/flare_gun_model.tscn" id="2_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://c212s0tp4kyx0" path="res://scenes/flashlight_model.tscn" id="3_fjrip"]
 [ext_resource type="Shader" uid="uid://ds7ko3t07i5ly" path="res://assets/colorclamp.gdshader" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://btpothrytjn0y" path="res://scenes/scanner_model.tscn" id="4_smehm"]
+[ext_resource type="Shader" uid="uid://edgh5mr1jxhx" path="res://assets/portal.gdshader" id="5_fjrip"]
 
 [sub_resource type="Environment" id="Environment_bon1q"]
 background_mode = 1
 
 [sub_resource type="World3D" id="World3D_bjopx"]
 environment = SubResource("Environment_bon1q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bon1q"]
+albedo_color = Color(1, 0.918333, 0.51, 1)
+emission_enabled = true
+emission = Color(1, 0.908333, 0.45, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dqkch"]
 viewport_path = NodePath("Camera3D/Hand/Scanner/Node3D")
@@ -29,6 +36,38 @@ size = Vector2(0.25, 0.25)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smehm"]
+shader = ExtResource("5_fjrip")
+shader_parameter/cell_size = 100.0
+shader_parameter/move_speed = 0.5
+shader_parameter/distortion_amount = 0.3
+shader_parameter/distortion_speed = 1.0
+shader_parameter/color_shift_speed = 0.5
+shader_parameter/spin_speed = -0.01
+shader_parameter/num_colors = 5
+shader_parameter/color_array = PackedColorArray(1, 1, 1, 1, 0.78, 0.78, 0.78, 1, 0.43, 0.43, 0.43, 1, 0.18, 0.18, 0.18, 1, 0.06, 0.06, 0.06, 1)
+
+[sub_resource type="Gradient" id="Gradient_ur7pv"]
+offsets = PackedFloat32Array(0.05074, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y4r1p"]
+gradient = SubResource("Gradient_ur7pv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2wvv"]
+shader = ExtResource("5_fjrip")
+shader_parameter/cell_size = 100.0
+shader_parameter/move_speed = 0.5
+shader_parameter/distortion_amount = 0.3
+shader_parameter/distortion_speed = 1.0
+shader_parameter/color_shift_speed = 0.5
+shader_parameter/spin_speed = 0.03
+shader_parameter/num_colors = 3
+shader_parameter/color_array = PackedColorArray(1, 0.22, 0.22, 1, 0.78, 0.1404, 0.1404, 1, 0.69, 0.2001, 0.2001, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
 bg_color = Color(0.0153333, 0, 0.46, 1)
 
@@ -45,6 +84,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0.7, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Hand/FlareGun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.40138e-14, 1.5708, 0.401424)]
 }
 
 [sub_resource type="Animation" id="Animation_4flbx"]
@@ -79,11 +130,13 @@ shader_parameter/dither_size = 1
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4flbx")
+bullet_scn = ExtResource("2_smehm")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="Flashlight" type="SpotLight3D" parent="Camera3D"]
+visible = false
 light_color = Color(1, 0.633333, 0, 1)
 spot_range = 8.0
 spot_angle = 20.0
@@ -92,8 +145,11 @@ spot_angle = 20.0
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.409984, -0.415, -0.685)
 
 [node name="FlareGun" parent="Camera3D/Hand" instance=ExtResource("2_tuyoq")]
-transform = Transform3D(-4.82839e-09, 2.04953e-09, 0.12, 0.0468877, 0.110461, -4.44089e-16, -0.110461, 0.0468877, -5.24536e-09, 0, 0.0257485, 0.0631508)
+transform = Transform3D(-3.33222e-06, 1.41444e-06, 1, 0.39073, 0.920506, -7.40138e-14, -0.920506, 0.39073, -3.61999e-06, 0, 0.0257485, 0.0631508)
 visible = false
+
+[node name="Marker3D" type="Marker3D" parent="Camera3D/Hand/FlareGun"]
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, -3.90799e-14, 4.44089e-16, 1, 0.355957, 0.147557, -1.19209e-07)
 
 [node name="Torch" parent="Camera3D/Hand" instance=ExtResource("3_fjrip")]
 transform = Transform3D(0.05, 0, 0, 0, 0.0433013, -0.025, 0, 0.025, 0.0433013, 0, -0.0361935, 0.358112)
@@ -108,7 +164,23 @@ own_world_3d = true
 world_3d = SubResource("World3D_bjopx")
 
 [node name="Camera3D" type="Camera3D" parent="Camera3D/Hand/Scanner/Node3D"]
-transform = Transform3D(1, 5.73122e-08, 7.10123e-09, -5.73122e-08, 1, -3.22569e-08, -7.10123e-09, 3.22569e-08, 1, 0.409984, 0.448622, 0.422674)
+transform = Transform3D(1, 5.73122e-08, 7.10123e-09, -5.73122e-08, 1, -3.22569e-08, -7.10123e-09, 3.22569e-08, 1, 0.025, -0.02, 0.75)
+
+[node name="arrow" type="Node3D" parent="Camera3D/Hand/Scanner/Node3D"]
+transform = Transform3D(1, -2.13163e-14, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0, 5.96046e-08, -5.96046e-08)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Camera3D/Hand/Scanner/Node3D/arrow"]
+transform = Transform3D(1, 0, 3.82137e-15, 3.82137e-15, 4.37114e-08, -1, 0, 1, 4.37114e-08, 0, 0, 0)
+radius = 0.05
+height = 0.35
+material = SubResource("StandardMaterial3D_bon1q")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Camera3D/Hand/Scanner/Node3D/arrow/CSGCylinder3D"]
+transform = Transform3D(1, 5.0822e-20, -7.62288e-22, 7.10548e-15, 1, 0, 7.10543e-15, 0, 1, 0, 0.205568, -0.018685)
+radius = 0.12
+height = 0.2
+cone = true
+material = SubResource("StandardMaterial3D_bon1q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Hand/Scanner"]
 transform = Transform3D(-2.40413e-07, 2.59369e-07, 5.5, -1.77413e-07, 5.5, -2.59369e-07, -5.5, -1.77413e-07, -2.40413e-07, 0.298582, 0.15769, -0.00186944)
@@ -139,26 +211,62 @@ theme_override_font_sizes/font_size = 20
 text = "YOU ESCAPED!"
 horizontal_alignment = 1
 
-[node name="losel" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="losel" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_smehm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/losel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -97.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_y4r1p")
+
+[node name="Label" type="Label" parent="CanvasLayer/losel"]
+clip_children = 2
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -91.5
+offset_top = -114.0
+offset_right = 91.5
+offset_bottom = 114.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "YOU DIED FROM THE RABID BITES
-OF A DISEASED DEAD GUY. RIP."
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_onrkg")
+theme_override_font_sizes/font_size = 61
+text = "MORTAL
+TETHER
+BROKEN"
+
+[node name="losel" type="ColorRect" parent="CanvasLayer/losel/Label"]
+material = SubResource("ShaderMaterial_d2wvv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -21.0
+offset_right = 149.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="hudlabel" type="Label" parent="CanvasLayer"]
-visible = false
 anchors_preset = -1
 anchor_left = 0.033
 anchor_top = 0.859
@@ -192,9 +300,6 @@ theme_override_font_sizes/font_size = 16
 text = "-•-"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HipScannerPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

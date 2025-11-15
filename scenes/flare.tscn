@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://bj6bst6qjhar5"]
+
+[ext_resource type="Script" uid="uid://cbmq65wlub3um" path="res://scripts/flare.gd" id="1_f7gxc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f7gxc"]
+rough = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_knwxn"]
+radius = 0.03
+height = 0.33
+radial_segments = 4
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7gxc"]
+shading_mode = 0
+albedo_color = Color(1, 0.31, 0.31, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqsdn"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_3npih"]
+material = SubResource("StandardMaterial3D_gqsdn")
+radius = 0.05
+height = 0.1
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Curve" id="Curve_klg6k"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.260606, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_4qifi"]
+offsets = PackedFloat32Array(0.10661, 0.1258, 0.628998)
+colors = PackedColorArray(1, 0.433333, 0, 1, 1, 0, 0, 0.211765, 0, 0, 0, 0.321569)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f7gxc"]
+radius = 0.0818107
+height = 0.27885
+
+[node name="Node3D" type="RigidBody3D" groups=["flare"]]
+physics_material_override = SubResource("PhysicsMaterial_f7gxc")
+script = ExtResource("1_f7gxc")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_knwxn")
+material = SubResource("StandardMaterial3D_f7gxc")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125666)
+amount = 20
+lifetime = 1.2
+mesh = SubResource("SphereMesh_3npih")
+gravity = Vector3(0, 5, 0)
+scale_amount_curve = SubResource("Curve_klg6k")
+color_ramp = SubResource("Gradient_4qifi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_f7gxc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0680556, 0)
+light_color = Color(0.996078, 0.486275, 0.443137, 1)

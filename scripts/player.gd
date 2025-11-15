@@ -7,21 +7,35 @@ var mouse_sensitivity = 0.008
 
 @onready var cam : Camera3D = $Camera3D
 @onready var winl: Label = $CanvasLayer/winl
-@onready var losel: Label = $CanvasLayer/losel
+@onready var losel: ColorRect = $CanvasLayer/losel
 @onready var flashlight: SpotLight3D = $Camera3D/Flashlight
 @onready var animplayer: AnimationPlayer = $AnimationPlayer
 @onready var hudlabel: Label = $CanvasLayer/hudlabel
 @onready var scannermodel: Node3D = $Camera3D/Hand/Scanner
 @onready var flashlightmodel: Node3D = $Camera3D/Hand/Torch
 @onready var flaregunmodel: Node3D = $Camera3D/Hand/FlareGun
+@onready var cursor: Label = $CanvasLayer/Label
+@onready var arrow: Node3D = $Camera3D/Hand/Scanner/Node3D/arrow
+@onready var muzzle: Marker3D = $Camera3D/Hand/FlareGun/Marker3D
 
-@onready var arrow: MeshInstance3D = $arrow
+@export var bullet_scn : PackedScene
 
 func  _ready() -> void:
+	hudlabel.visible = false
+	cursor.visible = true
 	animplayer.play("headbob")
 	winl.visible = false
 	losel.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if get_parent().name == "TownAct2":
+		hudlabel.visible = true
+		hudlabel.text = " I suspect the place is gonna be crawling with Statics..."
+		await get_tree().create_timer(3).timeout
+		hudlabel.text = " Better not get close and keep moving..."
+		await get_tree().create_timer(3).timeout
+		hudlabel.text = " Let's fire up the Scanner(Q) and track the signal"
+		await get_tree().create_timer(3).timeout
+		hudlabel.visible = false
 
 func _physics_process(delta):
 	update_arrow_rotation()
@@ -42,6 +56,8 @@ func _physics_process(delta):
 	move_and_slide()
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
+
+var can_shoot = true
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -72,6 +88,21 @@ func _input(event):
 				flashlightmodel.visible = false
 			if scannermodel:
 				scannermodel.visible = false
+	if event.is_action_pressed("fire") and flaregunmodel.visible and bullet_scn and can_shoot:
+		can_shoot = false
+		var bullet = bullet_scn.instantiate()
+		get_tree().current_scene.add_child(bullet)
+		bullet.global_position = muzzle.global_position
+		bullet.linear_velocity = muzzle.global_transform.basis.x * 20
+		
+		var original_rotation = flaregunmodel.rotation
+		flaregunmodel.rotation_degrees += Vector3(0, 0, 30)
+		var tween = get_tree().create_tween()
+		tween.tween_property(flaregunmodel, "rotation", original_rotation, 0.3)
+		
+		await get_tree().create_timer(1).timeout
+		can_shoot = true
+
 
 func game_end_ui(win : bool) -> void:
 	if win:
@@ -80,24 +111,23 @@ func game_end_ui(win : bool) -> void:
 	else:
 		losel.visible = true
 		winl.visible = false
+	cursor.visible = false
 
 func update_arrow_rotation():
-	if not arrow or not scannermodel.visible:
-		return
 	
 	var radios = get_tree().get_nodes_in_group("anradio")
-	print(radios.size())
 	if radios.is_empty():
+		arrow.rotation_degrees += Vector3.ONE
 		return
 	
 	var closest_radio = null
-	var closest_distance = 200
+	var closest_distance = INF
 	
 	for radio in radios:
-		var distance = arrow.global_position.distance_to(radio.global_position)
+		var distance = global_position.distance_to(radio.global_position)
 		if distance < closest_distance:
 			closest_distance = distance
 			closest_radio = radio
 	
 	if closest_radio:
-		arrow.look_at(closest_radio.global_transform.origin, Vector3.UP, true)
+		arrow.look_at(closest_radio.global_transform.origin, Vector3.UP)
