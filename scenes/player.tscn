@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://lqlucsvm48x"]
+[gd_scene load_steps=31 format=3 uid="uid://lqlucsvm48x"]
 
 [ext_resource type="Script" uid="uid://b1cwrhnaxvid6" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_onrkg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://ds7ko3t07i5ly" path="res://assets/colorclamp.gdshader" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://btpothrytjn0y" path="res://scenes/scanner_model.tscn" id="4_smehm"]
 [ext_resource type="Shader" uid="uid://edgh5mr1jxhx" path="res://assets/portal.gdshader" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://ccygfv58fmt5g" path="res://scenes/pause_menu.gd" id="8_ur7pv"]
 
 [sub_resource type="Environment" id="Environment_bon1q"]
 background_mode = 1
@@ -47,12 +48,12 @@ shader_parameter/spin_speed = -0.01
 shader_parameter/num_colors = 5
 shader_parameter/color_array = PackedColorArray(1, 1, 1, 1, 0.78, 0.78, 0.78, 1, 0.43, 0.43, 0.43, 1, 0.18, 0.18, 0.18, 1, 0.06, 0.06, 0.06, 1)
 
-[sub_resource type="Gradient" id="Gradient_ur7pv"]
+[sub_resource type="Gradient" id="Gradient_smehm"]
 offsets = PackedFloat32Array(0.05074, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y4r1p"]
-gradient = SubResource("Gradient_ur7pv")
+gradient = SubResource("Gradient_smehm")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
@@ -127,6 +128,25 @@ shader_parameter/enabled = true
 shader_parameter/dithering = true
 shader_parameter/colors = 12
 shader_parameter/dither_size = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smehm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur7pv"]
+bg_color = Color(0.391, 0, 0.46, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4r1p"]
+bg_color = Color(0.0153333, 0, 0.46, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2wvv"]
+bg_color = Color(0, 0.222333, 0.46, 1)
+
+[sub_resource type="Theme" id="Theme_3v2ag"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("2_onrkg")
+Button/styles/focus = SubResource("StyleBoxEmpty_smehm")
+Button/styles/hover = SubResource("StyleBoxFlat_ur7pv")
+Button/styles/normal = SubResource("StyleBoxFlat_y4r1p")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2wvv")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4flbx")
@@ -316,3 +336,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer2"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_ur7pv")
+
+[node name="hudlabel" type="Label" parent="CanvasLayer2/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = -5
+theme_override_fonts/font = ExtResource("2_onrkg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3pqv")
+text = "
+The experience is currently paused.
+
+ Press [Here] to continue your experience. 
+
+Thank you for your patronage. - C,E & L
+"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="CanvasLayer2/PauseMenu"]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 176.0
+offset_bottom = 152.0
+theme = SubResource("Theme_3v2ag")
+text = "[Here]"

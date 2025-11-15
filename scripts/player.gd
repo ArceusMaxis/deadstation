@@ -17,6 +17,7 @@ var mouse_sensitivity = 0.008
 @onready var cursor: Label = $CanvasLayer/Label
 @onready var arrow: Node3D = $Camera3D/Hand/Scanner/Node3D/arrow
 @onready var muzzle: Marker3D = $Camera3D/Hand/FlareGun/Marker3D
+@onready var pause_menu: Control = $CanvasLayer2/PauseMenu
 
 @export var bullet_scn : PackedScene
 
@@ -29,12 +30,14 @@ func  _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if get_parent().name == "TownAct2":
 		hudlabel.visible = true
-		hudlabel.text = " I suspect the place is gonna be crawling with Statics..."
+		hudlabel.text = " Lure Untethered with Flare gun (E)"
 		await get_tree().create_timer(3).timeout
-		hudlabel.text = " Better not get close and keep moving..."
-		await get_tree().create_timer(3).timeout
-		hudlabel.text = " Let's fire up the Scanner(Q) and track the signal"
-		await get_tree().create_timer(3).timeout
+		hudlabel.text = " Use Scanner(Q) to find SOS source"
+		await get_tree().create_timer(2).timeout
+		hudlabel.text = " Don't try to fight the Untethered, its useless"
+		await get_tree().create_timer(2).timeout
+		hudlabel.text = " Goodluck, Charter 7"
+		await get_tree().create_timer(2).timeout
 		hudlabel.visible = false
 
 func _physics_process(delta):
@@ -102,6 +105,11 @@ func _input(event):
 		
 		await get_tree().create_timer(1).timeout
 		can_shoot = true
+	
+	if event.is_action_pressed("pause"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		pause_menu.visible = true
+		get_tree().paused = true
 
 
 func game_end_ui(win : bool) -> void:

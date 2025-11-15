@@ -1,26 +1,62 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8nvdn0rhnye0"]
+[gd_scene load_steps=15 format=3 uid="uid://b8nvdn0rhnye0"]
 
 [ext_resource type="Script" uid="uid://ce6uwvl7qk7jd" path="res://scripts/mainmenu.gd" id="1_natt5"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_r3g3c"]
+[ext_resource type="Script" uid="uid://bub6g3yuctam0" path="res://scenes/creditsscreen.gd" id="3_3vvtq"]
+[ext_resource type="Shader" uid="uid://edgh5mr1jxhx" path="res://assets/portal.gdshader" id="4_s5g8n"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2nv2"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvtq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2nv2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5g8n"]
 bg_color = Color(0.391, 0, 0.46, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igs2m"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yvfd"]
 bg_color = Color(0.0153333, 0, 0.46, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgsso"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfy5j"]
 bg_color = Color(0, 0.222333, 0.46, 1)
 
 [sub_resource type="Theme" id="Theme_7uvds"]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/fonts/font = ExtResource("2_r3g3c")
-Button/styles/focus = SubResource("StyleBoxEmpty_d2nv2")
-Button/styles/hover = SubResource("StyleBoxFlat_d2nv2")
-Button/styles/normal = SubResource("StyleBoxFlat_igs2m")
-Button/styles/pressed = SubResource("StyleBoxFlat_wgsso")
+Button/styles/focus = SubResource("StyleBoxEmpty_3vvtq")
+Button/styles/hover = SubResource("StyleBoxFlat_s5g8n")
+Button/styles/normal = SubResource("StyleBoxFlat_7yvfd")
+Button/styles/pressed = SubResource("StyleBoxFlat_dfy5j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yvfd"]
+shader = ExtResource("4_s5g8n")
+shader_parameter/cell_size = 100.0
+shader_parameter/move_speed = 0.5
+shader_parameter/distortion_amount = 0.3
+shader_parameter/distortion_speed = 1.0
+shader_parameter/color_shift_speed = 0.5
+shader_parameter/spin_speed = -0.01
+shader_parameter/num_colors = 5
+shader_parameter/color_array = PackedColorArray(1, 1, 1, 1, 0.78, 0.78, 0.78, 1, 0.43, 0.43, 0.43, 1, 0.18, 0.18, 0.18, 1, 0.06, 0.06, 0.06, 1)
+
+[sub_resource type="Gradient" id="Gradient_ur7pv"]
+offsets = PackedFloat32Array(0.05074, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dfy5j"]
+gradient = SubResource("Gradient_ur7pv")
+fill = 1
+fill_from = Vector2(0.1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85riq"]
+shader = ExtResource("4_s5g8n")
+shader_parameter/cell_size = 100.0
+shader_parameter/move_speed = 0.5
+shader_parameter/distortion_amount = 0.3
+shader_parameter/distortion_speed = 1.0
+shader_parameter/color_shift_speed = 0.5
+shader_parameter/spin_speed = 0.03
+shader_parameter/num_colors = 3
+shader_parameter/color_array = PackedColorArray(0.22, 0.818, 1, 1, 0.1404, 0.43888, 0.78, 1, 0.2001, 0.33074, 0.69, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wf3n4"]
 
 [node name="MM" type="Control"]
 layout_mode = 3
@@ -39,9 +75,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -15.0
+offset_top = 5.0
 offset_right = 50.0
-offset_bottom = 89.0
+offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -56,12 +92,6 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = SubResource("Theme_7uvds")
 text = "Credits"
-
-[node name="Settings" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme = SubResource("Theme_7uvds")
-text = "Settings"
 
 [node name="Quit" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -98,3 +128,170 @@ theme_override_fonts/font = ExtResource("2_r3g3c")
 text = "<+> peak fiction by chaak + evan + liv (team name here)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="creditsscreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_3vvtq")
+
+[node name="losel" type="ColorRect" parent="creditsscreen"]
+material = SubResource("ShaderMaterial_7yvfd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="creditsscreen/losel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -192.0
+offset_right = 160.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_dfy5j")
+
+[node name="Label" type="Label" parent="creditsscreen/losel"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -114.0
+offset_right = 208.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 30
+theme_override_fonts/font = ExtResource("2_r3g3c")
+theme_override_font_sizes/font_size = 40
+text = "Chaak
+Evan
+Liv"
+vertical_alignment = 1
+
+[node name="losel" type="ColorRect" parent="creditsscreen/losel/Label"]
+material = SubResource("ShaderMaterial_85riq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -21.0
+offset_right = 32.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="creditsscreen/losel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -71.0
+offset_right = 208.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 30
+theme_override_fonts/font = ExtResource("2_r3g3c")
+theme_override_font_sizes/font_size = 24
+text = "programming"
+
+[node name="Label3" type="Label" parent="creditsscreen/losel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 12.0
+offset_right = 208.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 30
+theme_override_fonts/font = ExtResource("2_r3g3c")
+theme_override_font_sizes/font_size = 24
+text = "3D Modeling"
+
+[node name="Label4" type="Label" parent="creditsscreen/losel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 91.0
+offset_right = 208.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 30
+theme_override_fonts/font = ExtResource("2_r3g3c")
+theme_override_font_sizes/font_size = 24
+text = "Art and Videos"
+
+[node name="chaakb" type="Button" parent="creditsscreen"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 80.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wf3n4")
+flat = true
+
+[node name="evanb" type="Button" parent="creditsscreen"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 112.0
+offset_right = 144.0
+offset_bottom = 160.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wf3n4")
+flat = true
+
+[node name="livb" type="Button" parent="creditsscreen"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 192.0
+offset_right = 144.0
+offset_bottom = 240.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wf3n4")
+flat = true
+
+[node name="backb" type="Button" parent="creditsscreen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -46.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_7uvds")
+text = "Back"
