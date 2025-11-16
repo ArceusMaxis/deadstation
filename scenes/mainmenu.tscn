@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce6uwvl7qk7jd" path="res://scripts/mainmenu.gd" id="1_natt5"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_r3g3c"]
-[ext_resource type="Script" uid="uid://bub6g3yuctam0" path="res://scenes/creditsscreen.gd" id="3_3vvtq"]
+[ext_resource type="Script" uid="uid://bub6g3yuctam0" path="res://scripts/creditsscreen.gd" id="3_3vvtq"]
 [ext_resource type="Shader" uid="uid://edgh5mr1jxhx" path="res://assets/portal.gdshader" id="4_s5g8n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvtq"]

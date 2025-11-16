@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcs6bhhrsnb8n"]
+[gd_scene load_steps=10 format=3 uid="uid://1rrolpbwm7x0"]
 
-[ext_resource type="Script" uid="uid://dd2xvf3flkswv" path="res://scripts/standing_enemy.gd" id="1_svblt"]
+[ext_resource type="Script" uid="uid://k8inwyst3xdx" path="res://scripts/standing_enemy.gd" id="1_svblt"]
 [ext_resource type="Texture2D" uid="uid://c5pafsu6alyp0" path="res://assets/placeholder_Zombie.png" id="2_gcni0"]
+[ext_resource type="AudioStream" uid="uid://dbvtyw8c5p215" path="res://assets/724706__9voltplasma__glitchy-radio-static-industrial-sfx.wav" id="2_lt0xm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0i8y"]
 
@@ -27,45 +28,16 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Animation" id="Animation_lt0xm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.00607261, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gcni0"]
-resource_name = "lurch"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector3(0, 0.00607261, 0), Vector3(0.2, 0.006, 0), Vector3(0, 0.00607261, 0), Vector3(-0.2, 0.006, 0), Vector3(0, 0.006, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lt0xm"]
-_data = {
-&"RESET": SubResource("Animation_lt0xm"),
-&"lurch": SubResource("Animation_gcni0")
-}
-
 [node name="StandingEnemy" type="StaticBody3D"]
 script = ExtResource("1_svblt")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("2_lt0xm")
+volume_db = -10.0
+autoplay = true
+max_distance = 20.0
+bus = &"AnRadio"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -128,10 +100,5 @@ initial_velocity_min = 1.0
 initial_velocity_max = 2.0
 scale_amount_curve = SubResource("Curve_cvrte")
 hue_variation_curve = SubResource("Curve_owe5c")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_lt0xm")
-}
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

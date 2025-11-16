@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://lqlucsvm48x"]
+[gd_scene load_steps=35 format=3 uid="uid://lqlucsvm48x"]
 
 [ext_resource type="Script" uid="uid://b1cwrhnaxvid6" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_onrkg"]
@@ -8,31 +8,58 @@
 [ext_resource type="Shader" uid="uid://ds7ko3t07i5ly" path="res://assets/colorclamp.gdshader" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://btpothrytjn0y" path="res://scenes/scanner_model.tscn" id="4_smehm"]
 [ext_resource type="Shader" uid="uid://edgh5mr1jxhx" path="res://assets/portal.gdshader" id="5_fjrip"]
-[ext_resource type="Script" uid="uid://ccygfv58fmt5g" path="res://scenes/pause_menu.gd" id="8_ur7pv"]
-
-[sub_resource type="Environment" id="Environment_bon1q"]
-background_mode = 1
-
-[sub_resource type="World3D" id="World3D_bjopx"]
-environment = SubResource("Environment_bon1q")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bon1q"]
-albedo_color = Color(1, 0.918333, 0.51, 1)
-emission_enabled = true
-emission = Color(1, 0.908333, 0.45, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_dqkch"]
-viewport_path = NodePath("Camera3D/Hand/Scanner/Node3D")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_dqkch")
+[ext_resource type="Shader" uid="uid://bxg8otfoha6mr" path="res://assets/scanner.gdshader" id="6_y4r1p"]
+[ext_resource type="Script" uid="uid://ccygfv58fmt5g" path="res://scripts/pause_menu.gd" id="8_ur7pv"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fjrip"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_qlg0r")
 size = Vector2(0.25, 0.25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3v2ag"]
+render_priority = 0
+shader = ExtResource("6_y4r1p")
+shader_parameter/lines = 30
+shader_parameter/amplitude = 0.618
+shader_parameter/frequency = 0.1
+shader_parameter/intensity = 0.75
+shader_parameter/line_sharpness = 0.5
+shader_parameter/line_size = 0.8
+shader_parameter/fade = 0.1
+shader_parameter/rest_size = -0.2
+shader_parameter/edge = 0.05
+shader_parameter/speed = 0.5
+shader_parameter/color = Color(0.8, 0.25, 0.5, 1)
+shader_parameter/dot_matrix = false
+shader_parameter/dot_matriz_size = 40
+shader_parameter/speech_sim = false
+shader_parameter/speech_intensity = 0.8
+shader_parameter/progress = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4r1p"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jej6c"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1ej7"]
+shading_mode = 0
+albedo_color = Color(0.4, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oprun"]
+shading_mode = 0
+albedo_color = Color(0.716667, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8ls1"]
+shading_mode = 0
+albedo_color = Color(1, 0.933333, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfm1y"]
+shading_mode = 0
+albedo_color = Color(1, 0.8, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fulsm"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.3
@@ -158,7 +185,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 [node name="Flashlight" type="SpotLight3D" parent="Camera3D"]
 visible = false
 light_color = Color(1, 0.633333, 0, 1)
-spot_range = 8.0
+light_energy = 3.0
+spot_range = 50.0
 spot_angle = 20.0
 
 [node name="Hand" type="Marker3D" parent="Camera3D"]
@@ -179,34 +207,52 @@ visible = false
 transform = Transform3D(-4.75932e-09, -4.1934e-09, -0.13, -0.0336465, 0.12557, -2.81871e-09, 0.12557, 0.0336465, -5.68248e-09, 0, 0.130178, 0.146354)
 visible = false
 
-[node name="Node3D" type="SubViewport" parent="Camera3D/Hand/Scanner"]
-own_world_3d = true
-world_3d = SubResource("World3D_bjopx")
-
-[node name="Camera3D" type="Camera3D" parent="Camera3D/Hand/Scanner/Node3D"]
-transform = Transform3D(1, 5.73122e-08, 7.10123e-09, -5.73122e-08, 1, -3.22569e-08, -7.10123e-09, 3.22569e-08, 1, 0.025, -0.02, 0.75)
-
-[node name="arrow" type="Node3D" parent="Camera3D/Hand/Scanner/Node3D"]
-transform = Transform3D(1, -2.13163e-14, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0, 5.96046e-08, -5.96046e-08)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Camera3D/Hand/Scanner/Node3D/arrow"]
-transform = Transform3D(1, 0, 3.82137e-15, 3.82137e-15, 4.37114e-08, -1, 0, 1, 4.37114e-08, 0, 0, 0)
-radius = 0.05
-height = 0.35
-material = SubResource("StandardMaterial3D_bon1q")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Camera3D/Hand/Scanner/Node3D/arrow/CSGCylinder3D"]
-transform = Transform3D(1, 5.0822e-20, -7.62288e-22, 7.10548e-15, 1, 0, 7.10543e-15, 0, 1, 0, 0.205568, -0.018685)
-radius = 0.12
-height = 0.2
-cone = true
-material = SubResource("StandardMaterial3D_bon1q")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Hand/Scanner"]
-transform = Transform3D(-2.40413e-07, 2.59369e-07, 5.5, -1.77413e-07, 5.5, -2.59369e-07, -5.5, -1.77413e-07, -2.40413e-07, 0.298582, 0.15769, -0.00186944)
+transform = Transform3D(-2.40413e-07, 2.59369e-07, 5.5, -1.77413e-07, 5.5, -2.59369e-07, -5.5, -1.77413e-07, -2.40413e-07, 0.298582, 0.00326467, -0.00186944)
 layers = 3
 mesh = SubResource("QuadMesh_fjrip")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_3v2ag")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(-2.40413e-07, 2.59369e-07, 5.5, -1.77413e-07, 5.5, -2.59369e-07, -5.5, -1.77413e-07, -2.40413e-07, 0.281113, 0.148058, -0.00186944)
+layers = 3
+mesh = SubResource("QuadMesh_fjrip")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4r1p")
+
+[node name="LED1" type="CSGMesh3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(1, -4.54747e-13, -1.06581e-14, 4.54747e-13, 1, -1.42562e-16, 1.42109e-14, 1.40684e-14, 1, 0.286561, 0.658418, 0.544837)
+mesh = SubResource("BoxMesh_jej6c")
+material = SubResource("StandardMaterial3D_f1ej7")
+
+[node name="LED2" type="CSGMesh3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(1, -5.68434e-13, -1.06581e-14, 5.68434e-13, 1, -1.42562e-16, 1.42109e-14, 1.40684e-14, 1, 0.28656, 0.658418, 0.268651)
+mesh = SubResource("BoxMesh_jej6c")
+material = SubResource("StandardMaterial3D_oprun")
+
+[node name="LED3" type="CSGMesh3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(1, -5.68434e-13, -1.06581e-14, 5.68434e-13, 1, -1.42562e-16, 1.42109e-14, 1.40684e-14, 1, 0.28656, 0.658418, -0.0114021)
+mesh = SubResource("BoxMesh_jej6c")
+material = SubResource("StandardMaterial3D_a8ls1")
+
+[node name="LED4" type="CSGMesh3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(1, -5.68434e-13, -1.06581e-14, 5.68434e-13, 1, -1.42562e-16, 1.42109e-14, 1.40684e-14, 1, 0.286559, 0.658418, -0.290974)
+mesh = SubResource("BoxMesh_jej6c")
+material = SubResource("StandardMaterial3D_qfm1y")
+
+[node name="LED5" type="CSGMesh3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(1, -5.68434e-13, -1.06581e-14, 5.68434e-13, 1, -1.42562e-16, 1.42109e-14, 1.40684e-14, 1, 0.286558, 0.658418, -0.559609)
+mesh = SubResource("BoxMesh_jej6c")
+material = SubResource("StandardMaterial3D_fulsm")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(-4.37104e-08, -9.42052e-07, 1, -1.00657e-06, 1, 9.42052e-07, -1, -1.00657e-06, -4.37114e-08, 0.368408, 0.866959, 0.654386)
+text = "FAR"
+
+[node name="Label3D2" type="Label3D" parent="Camera3D/Hand/Scanner"]
+transform = Transform3D(-4.37104e-08, -9.42052e-07, 1, -1.00657e-06, 1, 9.42053e-07, -1, -1.00657e-06, -4.37114e-08, 0.368408, 0.866959, -0.591669)
+text = "NEAR"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_onrkg")
@@ -375,6 +421,7 @@ Thank you for your patronage. - C,E & L
 horizontal_alignment = 1
 
 [node name="Continue" type="Button" parent="CanvasLayer2/PauseMenu"]
+layout_mode = 0
 offset_left = 120.0
 offset_top = 120.0
 offset_right = 176.0

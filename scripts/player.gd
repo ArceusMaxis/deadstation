@@ -15,9 +15,13 @@ var mouse_sensitivity = 0.008
 @onready var flashlightmodel: Node3D = $Camera3D/Hand/Torch
 @onready var flaregunmodel: Node3D = $Camera3D/Hand/FlareGun
 @onready var cursor: Label = $CanvasLayer/Label
-@onready var arrow: Node3D = $Camera3D/Hand/Scanner/Node3D/arrow
 @onready var muzzle: Marker3D = $Camera3D/Hand/FlareGun/Marker3D
 @onready var pause_menu: Control = $CanvasLayer2/PauseMenu
+@onready var led_1: CSGMesh3D = $Camera3D/Hand/Scanner/LED1
+@onready var led_2: CSGMesh3D = $Camera3D/Hand/Scanner/LED2
+@onready var led_3: CSGMesh3D = $Camera3D/Hand/Scanner/LED3
+@onready var led_4: CSGMesh3D = $Camera3D/Hand/Scanner/LED4
+@onready var led_5: CSGMesh3D = $Camera3D/Hand/Scanner/LED5
 
 @export var bullet_scn : PackedScene
 
@@ -41,7 +45,7 @@ func  _ready() -> void:
 		hudlabel.visible = false
 
 func _physics_process(delta):
-	update_arrow_rotation()
+	update_scanner_LED()
 	velocity.y += -gravity * delta
 	var input = Input.get_vector("left", "right", "forward", "back")
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y).normalized()
@@ -111,7 +115,6 @@ func _input(event):
 		pause_menu.visible = true
 		get_tree().paused = true
 
-
 func game_end_ui(win : bool) -> void:
 	if win:
 		winl.visible = true
@@ -121,21 +124,29 @@ func game_end_ui(win : bool) -> void:
 		winl.visible = false
 	cursor.visible = false
 
-func update_arrow_rotation():
-	
-	var radios = get_tree().get_nodes_in_group("anradio")
-	if radios.is_empty():
-		arrow.rotation_degrees += Vector3.ONE
+func update_scanner_LED():
+	if not scannermodel.visible:
 		return
 	
-	var closest_radio = null
-	var closest_distance = INF
+	led_1.visible = false
+	led_2.visible = false
+	led_3.visible = false
+	led_4.visible = false
+	led_5.visible = false
 	
-	for radio in radios:
-		var distance = global_position.distance_to(radio.global_position)
-		if distance < closest_distance:
-			closest_distance = distance
-			closest_radio = radio
+	var target = get_tree().get_first_node_in_group("target")
+	if not target:
+		return
 	
-	if closest_radio:
-		arrow.look_at(closest_radio.global_transform.origin, Vector3.UP)
+	var distance = global_position.distance_to(target.global_position)
+	
+	if distance < 75:
+		led_1.visible = true
+	if distance < 50:
+		led_2.visible = true
+	if distance < 25:
+		led_3.visible = true
+	if distance < 15:
+		led_4.visible = true
+	if distance < 6:
+		led_5.visible = true
