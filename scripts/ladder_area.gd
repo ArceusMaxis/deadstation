@@ -4,18 +4,15 @@ var player = null
 var is_climbing = false
 var climb_speed = 0.8
 
-func _ready():
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
 		player.hudlabel.visible = true
 		player.hudlabel.text = " [Left Click] to Climb"
 		await get_tree().create_timer(2).timeout
-		player.hudlabel.text = ""
-		player.hudlabel.visible = false
+		if player != null:
+			player.hudlabel.text = ""
+			player.hudlabel.visible = false
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):

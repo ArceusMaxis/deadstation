@@ -161,7 +161,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5704p")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sog8m"]
-size = Vector3(3.37402, 274.729, 4.50598)
+size = Vector3(3.37402, 270.341, 4.50598)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ghwpb"]
 size = Vector3(6.69727, 3.32227, 5.48645)
@@ -270,8 +270,8 @@ albedo_color = Color(0.14902, 0.0470588, 0.0470588, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_lru7s"]
 size = Vector3(40, 10.3, 40)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lru7s"]
-data = PackedVector3Array(2.935, -0.3, -1.11584, 10, -0.3, -10, -2.935, -0.3, -1.11584, 10, 0.3, 10, 2.935, 0.3, 3.21416, 2.935, 0.3, -1.11584, 10, 0.3, 10, 10, 0.3, -10, 10, -0.3, 10, -2.935, 0.3, 3.21416, 2.935, 0.3, 3.21416, 10, 0.3, 10, 10, 0.3, 10, 2.935, 0.3, -1.11584, 10, 0.3, -10, 2.935, 0.3, -1.11584, -10, 0.3, -10, 10, 0.3, -10, 10, -0.3, -10, 10, 0.3, -10, -10, 0.3, -10, 2.935, -0.3, 3.21416, 10, -0.3, 10, 2.935, -0.3, -1.11584, 10, 0.3, 10, 10, -0.3, 10, -10, -0.3, 10, 2.935, -0.3, 3.21416, -10, -0.3, 10, 10, -0.3, 10, 10, -0.3, 10, 10, 0.3, -10, 10, -0.3, -10, 2.935, -0.3, -1.11584, 10, -0.3, 10, 10, -0.3, -10, -10, -0.3, 10, -2.935, -0.3, -1.11584, -10, -0.3, -10, -2.935, 0.3, 3.21416, 10, 0.3, 10, -10, 0.3, 10, -2.935, -0.3, -1.11584, 10, -0.3, -10, -10, -0.3, -10, -2.935, 0.3, 3.21416, -10, 0.3, 10, -2.935, 0.3, -1.11584, -10, 0.3, -10, -10, -0.3, -10, 10, -0.3, -10, -2.935, 0.3, -1.11584, -10, 0.3, -10, 2.935, 0.3, -1.11584, -10, -0.3, 10, -2.935, -0.3, 3.21416, -2.935, -0.3, -1.11584, -2.935, 0.3, -1.11584, -10, 0.3, 10, -10, 0.3, -10, -10, 0.3, -10, -10, 0.3, 10, -10, -0.3, -10, -10, 0.3, 10, 10, 0.3, 10, -10, -0.3, 10, 2.935, -0.3, 3.21416, -2.935, -0.3, 3.21416, -10, -0.3, 10, -10, -0.3, -10, -10, 0.3, 10, -10, -0.3, 10, -2.935, -0.3, 3.21416, 2.935, -0.3, 3.21416, -2.935, 0.3, 3.21416, 2.935, 0.3, -1.11584, 2.935, 0.3, 3.21416, 2.935, -0.3, -1.11584, 2.935, 0.3, 3.21416, -2.935, 0.3, 3.21416, 2.935, -0.3, 3.21416, -2.935, -0.3, -1.11584, -2.935, -0.3, 3.21416, -2.935, 0.3, -1.11584, 2.935, -0.3, -1.11584, 2.935, 0.3, 3.21416, 2.935, -0.3, 3.21416, 2.935, 0.3, -1.11584, -2.935, -0.3, -1.11584, -2.935, 0.3, -1.11584, -2.935, -0.3, -1.11584, 2.935, 0.3, -1.11584, 2.935, -0.3, -1.11584, -2.935, 0.3, -1.11584, -2.935, -0.3, 3.21416, -2.935, 0.3, 3.21416)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvl1y"]
+size = Vector3(21, 0.553711, 20.5479)
 
 [node name="TownAct2" type="Node3D"]
 
@@ -609,7 +609,7 @@ skeleton = NodePath("")
 script = ExtResource("29_lru7s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Antenna/RadioTower/LadderArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 138.464, 1.4017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 136.27, 1.4017)
 shape = SubResource("BoxShape3D_sog8m")
 
 [node name="Node3D" type="Node3D" parent="Antenna/RadioTower/LadderArea"]
@@ -650,12 +650,28 @@ material = SubResource("StandardMaterial3D_sog8m")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Antenna"]
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Antenna/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 275.94, 0)
-shape = SubResource("ConcavePolygonShape3D_lru7s")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Antenna/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 276.906, 0)
+shape = SubResource("BoxShape3D_rvl1y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Antenna/StaticBody3D"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -10, 285.821, 0)
+shape = SubResource("BoxShape3D_rvl1y")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Antenna/StaticBody3D"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 10, 285.821, 0)
+shape = SubResource("BoxShape3D_rvl1y")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Antenna/StaticBody3D"]
+transform = Transform3D(0, 4.37114e-08, -1, 1, 0, 0, 0, -1, -4.37114e-08, 0, 285.821, 9.99997)
+shape = SubResource("BoxShape3D_rvl1y")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Antenna/StaticBody3D"]
+transform = Transform3D(0, 4.37114e-08, -1, 1, 0, 0, 0, -1, -4.37114e-08, 0, 285.821, -10.0001)
+shape = SubResource("BoxShape3D_rvl1y")
 
 [node name="Player" parent="." instance=ExtResource("1_lru7s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.8079, 0.999992, -4.88792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6643, 0.999992, -23.7895)
 
 [node name="flat_Lshape_brick" parent="." instance=ExtResource("4_kqh35")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -76.9837, 0, 6.96674)

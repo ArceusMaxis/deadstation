@@ -100,7 +100,7 @@ func _input(event):
 		var bullet = bullet_scn.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = muzzle.global_position
-		bullet.linear_velocity = muzzle.global_transform.basis.x * 20
+		bullet.linear_velocity = muzzle.global_transform.basis.z * 20
 		
 		var original_rotation = flaregunmodel.rotation
 		flaregunmodel.rotation_degrees += Vector3(0, 0, 30)
