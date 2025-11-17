@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://lqlucsvm48x"]
+[gd_scene load_steps=40 format=3 uid="uid://lqlucsvm48x"]
 
 [ext_resource type="Script" uid="uid://b1cwrhnaxvid6" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_onrkg"]
@@ -64,6 +64,9 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
+bg_color = Color(0.0153333, 0, 0.46, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smehm"]
 shader = ExtResource("5_fjrip")
 shader_parameter/cell_size = 100.0
@@ -96,8 +99,24 @@ shader_parameter/spin_speed = 0.03
 shader_parameter/num_colors = 3
 shader_parameter/color_array = PackedColorArray(1, 0.22, 0.22, 1, 0.78, 0.1404, 0.1404, 1, 0.69, 0.2001, 0.2001, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvtq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5g8n"]
+bg_color = Color(0.391, 0, 0.46, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yvfd"]
 bg_color = Color(0.0153333, 0, 0.46, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfy5j"]
+bg_color = Color(0, 0.222333, 0.46, 1)
+
+[sub_resource type="Theme" id="Theme_y4r1p"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("2_onrkg")
+Button/styles/focus = SubResource("StyleBoxEmpty_3vvtq")
+Button/styles/hover = SubResource("StyleBoxFlat_s5g8n")
+Button/styles/normal = SubResource("StyleBoxFlat_7yvfd")
+Button/styles/pressed = SubResource("StyleBoxFlat_dfy5j")
 
 [sub_resource type="Animation" id="Animation_onrkg"]
 length = 0.001
@@ -194,6 +213,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 
 [node name="FlareGun" parent="Camera3D/Hand" instance=ExtResource("2_tuyoq")]
 transform = Transform3D(-3.33222e-06, 1.41444e-06, 1, 0.39073, 0.920506, -7.40138e-14, -0.920506, 0.39073, -3.61999e-06, 0, 0.0257485, 0.0631508)
+visible = false
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D/Hand/FlareGun"]
 transform = Transform3D(0.0749787, 0, 0.997185, 0, 1, 0, -0.997185, 0, 0.0749787, 0.355957, 0.147557, -1.19209e-07)
@@ -259,22 +279,41 @@ debug_color = Color(0, 0.595, 0.7, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="winl" type="Label" parent="CanvasLayer"]
-visible = false
+[node name="hudlabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.859
+anchor_right = 0.967
+anchor_bottom = 0.948
+offset_left = 0.16
+offset_top = 0.0699921
+offset_right = -0.160034
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_onrkg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3pqv")
+text = "test text goes here zebra"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "YOU ESCAPED!"
+theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
+theme_override_fonts/font = ExtResource("2_onrkg")
+theme_override_font_sizes/font_size = 16
+text = "-•-"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="losel" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_smehm")
@@ -331,40 +370,21 @@ offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="hudlabel" type="Label" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.033
-anchor_top = 0.859
-anchor_right = 0.967
-anchor_bottom = 0.948
-offset_left = 0.16
-offset_top = 0.0699921
-offset_right = -0.160034
-offset_bottom = 0.039978
-grow_horizontal = 2
+[node name="retryb" type="Button" parent="CanvasLayer/losel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -46.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_onrkg")
-theme_override_styles/normal = SubResource("StyleBoxFlat_i3pqv")
-text = "test text goes here zebra"
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -11.0
-offset_right = 16.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
-theme_override_fonts/font = ExtResource("2_onrkg")
-theme_override_font_sizes/font_size = 16
-text = "-•-"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme = SubResource("Theme_y4r1p")
+text = "Retry"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -372,9 +392,7 @@ libraries = {
 }
 autoplay = "headbob"
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_dn2wa")
 anchors_preset = 15
 anchor_right = 1.0
@@ -383,7 +401,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="PauseMenu" type="Control" parent="CanvasLayer2"]
+[node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -392,9 +410,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("8_ur7pv")
 
-[node name="hudlabel" type="Label" parent="CanvasLayer2/PauseMenu"]
+[node name="hudlabel" type="Label" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -419,7 +438,7 @@ Thank you for your patronage. - C,E & L
 "
 horizontal_alignment = 1
 
-[node name="Continue" type="Button" parent="CanvasLayer2/PauseMenu"]
+[node name="Continue" type="Button" parent="PauseMenu"]
 layout_mode = 0
 offset_left = 120.0
 offset_top = 120.0

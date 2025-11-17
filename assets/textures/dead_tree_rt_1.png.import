@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4pyp3jjflecd"
-path.s3tc="res://.godot/imported/ConcreteLayers.png-ae4facd94cffc18e4a0f874cb366fc0e.s3tc.ctex"
+uid="uid://duxnsos7tp88a"
+path.s3tc="res://.godot/imported/dead_tree_rt_1.png-d3c20bf7ad273ec78a299a7d4d931124.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://scenes/textures/ConcreteLayers.png"
-dest_files=["res://.godot/imported/ConcreteLayers.png-ae4facd94cffc18e4a0f874cb366fc0e.s3tc.ctex"]
+source_file="res://assets/textures/dead_tree_rt_1.png"
+dest_files=["res://.godot/imported/dead_tree_rt_1.png-d3c20bf7ad273ec78a299a7d4d931124.s3tc.ctex"]
 
 [params]
 

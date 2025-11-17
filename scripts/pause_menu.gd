@@ -8,4 +8,5 @@ func _ready() -> void:
 func bucket(): 
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_parent().cursor.visible = true
 	visible = false

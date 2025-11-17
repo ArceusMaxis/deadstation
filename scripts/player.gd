@@ -6,7 +6,6 @@ var jump_speed = 4
 var mouse_sensitivity = 0.008
 
 @onready var cam : Camera3D = $Camera3D
-@onready var winl: Label = $CanvasLayer/winl
 @onready var losel: ColorRect = $CanvasLayer/losel
 @onready var flashlight: SpotLight3D = $Camera3D/Flashlight
 @onready var animplayer: AnimationPlayer = $AnimationPlayer
@@ -16,23 +15,24 @@ var mouse_sensitivity = 0.008
 @onready var flaregunmodel: Node3D = $Camera3D/Hand/FlareGun
 @onready var cursor: Label = $CanvasLayer/Label
 @onready var muzzle: Marker3D = $Camera3D/Hand/FlareGun/Marker3D
-@onready var pause_menu: Control = $CanvasLayer2/PauseMenu
+@onready var pause_menu: Control = $PauseMenu
 @onready var led_1: CSGMesh3D = $Camera3D/Hand/Scanner/LED1
 @onready var led_2: CSGMesh3D = $Camera3D/Hand/Scanner/LED2
 @onready var led_3: CSGMesh3D = $Camera3D/Hand/Scanner/LED3
 @onready var led_4: CSGMesh3D = $Camera3D/Hand/Scanner/LED4
 @onready var led_5: CSGMesh3D = $Camera3D/Hand/Scanner/LED5
+@onready var retryb: Button = $CanvasLayer/losel/retryb
 
 @export var bullet_scn : PackedScene
 
 func  _ready() -> void:
+	retryb.pressed.connect(get_tree().reload_current_scene)
 	hudlabel.visible = false
 	cursor.visible = true
 	animplayer.play("headbob")
-	winl.visible = false
 	losel.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if get_parent().name == "TownAct2":
+	if get_parent().name == "Act2":
 		hudlabel.visible = true
 		hudlabel.text = " Lure Untethered with Flare gun (E)"
 		await get_tree().create_timer(3).timeout
@@ -41,6 +41,16 @@ func  _ready() -> void:
 		hudlabel.text = " Don't try to fight the Untethered, its useless"
 		await get_tree().create_timer(2).timeout
 		hudlabel.text = " Goodluck, Charter 7"
+		await get_tree().create_timer(2).timeout
+		hudlabel.visible = false
+	
+	if get_parent().name == "Act3":
+		hudlabel.visible = true
+		hudlabel.text = " It's too dark in here"
+		await get_tree().create_timer(3).timeout
+		hudlabel.text = " Gonna have to use the flashlight"
+		await get_tree().create_timer(2).timeout
+		hudlabel.text = " And continue to scan for the signal"
 		await get_tree().create_timer(2).timeout
 		hudlabel.visible = false
 
@@ -100,6 +110,7 @@ func _input(event):
 		var bullet = bullet_scn.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = muzzle.global_position
+		bullet.global_rotation = muzzle.global_rotation
 		bullet.linear_velocity = muzzle.global_transform.basis.z * 20
 		
 		var original_rotation = flaregunmodel.rotation
@@ -112,16 +123,16 @@ func _input(event):
 	
 	if event.is_action_pressed("pause"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		cursor.visible = false
 		pause_menu.visible = true
 		get_tree().paused = true
 
 func game_end_ui(win : bool) -> void:
 	if win:
-		winl.visible = true
-		losel.visible = false
+		pass
 	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		losel.visible = true
-		winl.visible = false
 	cursor.visible = false
 
 func update_scanner_LED():

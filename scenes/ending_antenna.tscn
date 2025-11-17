@@ -1,13 +1,15 @@
-[gd_scene load_steps=42 format=4 uid="uid://baw60t5t565aw"]
+[gd_scene load_steps=44 format=4 uid="uid://baw60t5t565aw"]
 
 [ext_resource type="PackedScene" uid="uid://lqlucsvm48x" path="res://scenes/player.tscn" id="1_lru7s"]
 [ext_resource type="PackedScene" uid="uid://wcnbl14i6x6n" path="res://assets/trees/tree_rt_1.glb" id="2_ghwpb"]
 [ext_resource type="PackedScene" uid="uid://8vokos2p1b52" path="res://assets/trees/tree_rt_3.glb" id="3_rvl1y"]
+[ext_resource type="PackedScene" uid="uid://dcs6bhhrsnb8n" path="res://scenes/moving_enemy.tscn" id="4_1sqy0"]
 [ext_resource type="PackedScene" uid="uid://ce2tbso4uheba" path="res://scenes/buildings/flat_lshape_brick.tscn" id="4_kqh35"]
 [ext_resource type="PackedScene" uid="uid://bqldbwb13wn0i" path="res://scenes/buildings/flat_lshape_large_alt.tscn" id="5_goi18"]
 [ext_resource type="Script" uid="uid://cidcpwq0j4d75" path="res://scenes/uparea_entered.gd" id="5_rvl1y"]
 [ext_resource type="PackedScene" uid="uid://bmt14yp7lak6c" path="res://scenes/buildings/flat_lshape_vertical_stripes.tscn" id="6_7o1fb"]
 [ext_resource type="PackedScene" uid="uid://c3htjuv0m2mim" path="res://scenes/buildings/flat_square_brick_alt.tscn" id="7_ghwpb"]
+[ext_resource type="Script" uid="uid://c0jan27t6msbs" path="res://scenes/signal_broadcast.gd" id="7_xgds2"]
 [ext_resource type="PackedScene" uid="uid://dl1a7jdg73rn1" path="res://scenes/buildings/flat_square_concrete.tscn" id="8_rvl1y"]
 [ext_resource type="PackedScene" uid="uid://cspcp74gd01ew" path="res://scenes/buildings/hangar_1.tscn" id="9_1sqy0"]
 [ext_resource type="PackedScene" uid="uid://sjiqmoyob8l6" path="res://scenes/buildings/flat_lshape.tscn" id="10_xgds2"]
@@ -532,6 +534,24 @@ transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273,
 [node name="tree_rt_85" parent="floor" instance=ExtResource("3_rvl1y")]
 transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -44.7094, 0.5, 22.4891)
 
+[node name="tree_rt_192" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, -2.12132, -61.2685, 0.5, 63.9694)
+
+[node name="tree_rt_193" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -71.7665, 0.5, 62.664)
+
+[node name="tree_rt_194" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -65.5336, 0.5, 59.8516)
+
+[node name="tree_rt_195" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, -2.12132, -54.7177, 0.5, 75.1851)
+
+[node name="tree_rt_196" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -65.2157, 0.5, 73.8797)
+
+[node name="tree_rt_197" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -58.9828, 0.5, 71.0673)
+
 [node name="tree_rt_86" parent="floor" instance=ExtResource("3_rvl1y")]
 transform = Transform3D(-1.5, 0, 2.59808, 0, 3, 0, -2.59808, 0, -1.5, -47.487, 0.5, 15.9865)
 
@@ -546,6 +566,444 @@ transform = Transform3D(-3.21314, 0, -0.607129, 0, 3.27, 0, 0.607129, 0, -3.2131
 
 [node name="tree_rt_89" parent="floor" instance=ExtResource("3_rvl1y")]
 transform = Transform3D(0.776457, 0, 2.89778, 0, 3, 0, -2.89778, 0, 0.776457, -51.6819, 0.5, 6.7079)
+
+[node name="tree_rt_54" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(5.4473, 0, 3.145, 0, 6.29, 0, -3.145, 0, 5.4473, -47.4278, 0.5, 97.5518)
+
+[node name="tree_rt_90" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(3.08623, 0, -1.08078, 0, 3.27, 0, 1.08078, 0, 3.08623, -45.5524, 0.5, 88.5335)
+
+[node name="tree_rt_91" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(3.08623, 0, -1.08078, 0, 3.27, 0, 1.08078, 0, 3.08623, -49.8821, 0.5, 83.2409)
+
+[node name="tree_rt_92" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, -2.12132, -55.4443, 0.5, 87.6069)
+
+[node name="tree_rt_55" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-3.145, 0, 5.4473, 0, 6.29, 0, -5.4473, 0, -3.145, -24.2581, 0.5, 84.0844)
+
+[node name="tree_rt_93" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, -33.2764, 0.5, 82.209)
+
+[node name="tree_rt_94" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, -38.569, 0.5, 86.5387)
+
+[node name="tree_rt_95" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, 2.12132, -34.203, 0.5, 92.1009)
+
+[node name="tree_rt_56" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(1.62797, 0, -6.07567, 0, 6.29, 0, 6.07567, 0, 1.62797, -74.1679, 0.5, 82.1559)
+
+[node name="tree_rt_96" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -65.9423, 0.5, 86.3015)
+
+[node name="tree_rt_97" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -59.7094, 0.5, 83.4891)
+
+[node name="tree_rt_98" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.5, 0, 2.59808, 0, 3, 0, -2.59808, 0, -1.5, -62.487, 0.5, 76.9865)
+
+[node name="tree_rt_99" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.21314, 0, -0.607129, 0, 3.27, 0, 0.607129, 0, -3.21314, -75.7119, 0.5, 71.8514)
+
+[node name="tree_rt_100" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.21314, 0, -0.607129, 0, 3.27, 0, 0.607129, 0, -3.21314, -69.3159, 0.5, 74.2701)
+
+[node name="tree_rt_101" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.776457, 0, 2.89778, 0, 3, 0, -2.89778, 0, 0.776457, -66.6819, 0.5, 67.7079)
+
+[node name="tree_rt_102" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(5.4473, 0, 3.145, 0, 6.29, 0, -3.145, 0, 5.4473, 5.5722, 0.5, 115.552)
+
+[node name="tree_rt_103" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(3.08623, 0, -1.08078, 0, 3.27, 0, 1.08078, 0, 3.08623, 7.4476, 0.5, 106.533)
+
+[node name="tree_rt_104" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(3.08623, 0, -1.08078, 0, 3.27, 0, 1.08078, 0, 3.08623, 3.1179, 0.5, 101.241)
+
+[node name="tree_rt_105" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, -2.12132, -2.4443, 0.5, 105.607)
+
+[node name="tree_rt_106" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-3.145, 0, 5.4473, 0, 6.29, 0, -5.4473, 0, -3.145, 28.7419, 0.5, 102.084)
+
+[node name="tree_rt_107" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, 19.7236, 0.5, 100.209)
+
+[node name="tree_rt_108" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, 14.431, 0.5, 104.539)
+
+[node name="tree_rt_109" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, 2.12132, 18.797, 0.5, 110.101)
+
+[node name="tree_rt_110" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(1.62797, 0, -6.07567, 0, 6.29, 0, 6.07567, 0, 1.62797, -21.1679, 0.5, 100.156)
+
+[node name="tree_rt_111" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -12.9423, 0.5, 104.301)
+
+[node name="tree_rt_112" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.84273, 0, -2.70134, 0, 3.27, 0, 2.70134, 0, -1.84273, -6.7094, 0.5, 101.489)
+
+[node name="tree_rt_113" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.5, 0, 2.59808, 0, 3, 0, -2.59808, 0, -1.5, -9.487, 0.5, 94.9865)
+
+[node name="tree_rt_114" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.21314, 0, -0.607129, 0, 3.27, 0, 0.607129, 0, -3.21314, -22.7119, 0.5, 89.8514)
+
+[node name="tree_rt_115" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.21314, 0, -0.607129, 0, 3.27, 0, 0.607129, 0, -3.21314, -16.3159, 0.5, 92.2701)
+
+[node name="tree_rt_116" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.776457, 0, 2.89778, 0, 3, 0, -2.89778, 0, 0.776457, -13.6819, 0.5, 85.7079)
+
+[node name="tree_rt_117" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-4.4477, 0, -4.4477, 0, 6.29, 0, 4.4477, 0, -4.4477, 54.4311, 0.499985, -83.2664)
+
+[node name="tree_rt_118" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.2608, 0, 0.245178, 0, 3.27, 0, -0.245178, 0, -3.2608, 54.9537, 0.499985, -74.07)
+
+[node name="tree_rt_119" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.2608, 0, 0.245178, 0, 3.27, 0, -0.245178, 0, -3.2608, 60.5057, 0.499985, -70.0783)
+
+[node name="tree_rt_120" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.5, 0, 2.59808, 0, 3, 0, -2.59808, 0, 1.5, 64.7484, 0.499985, -75.7352)
+
+[node name="tree_rt_121" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(4.4477, 0, -4.4477, 0, 6.29, 0, 4.4477, 0, 4.4477, 36.4082, 0.499985, -60.4064)
+
+[node name="tree_rt_122" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-0.245178, 0, -3.2608, 0, 3.27, 0, 3.2608, 0, -0.245178, 44.7329, 0.499985, -64.7837)
+
+[node name="tree_rt_123" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-0.245178, 0, -3.2608, 0, 3.27, 0, 3.2608, 0, -0.245178, 48.7245, 0.499985, -70.3357)
+
+[node name="tree_rt_124" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.59808, 0, 1.5, 0, 3, 0, -1.5, 0, -2.59808, 43.0677, 0.499985, -74.5784)
+
+[node name="tree_rt_125" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-3.145, 0, 5.4473, 0, 6.29, 0, -5.4473, 0, -3.145, 84.2448, 0.499985, -75.3159)
+
+[node name="tree_rt_126" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, 75.2265, 0.499985, -77.1913)
+
+[node name="tree_rt_127" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, 69.9339, 0.499985, -72.8616)
+
+[node name="tree_rt_128" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, 2.12132, 74.2998, 0.499985, -67.2994)
+
+[node name="tree_rt_129" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.94652, 0, 1.41806, 0, 3.27, 0, -1.41806, 0, 2.94652, 88.4032, 0.499985, -65.7622)
+
+[node name="tree_rt_130" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.94652, 0, 1.41806, 0, 3.27, 0, -1.41806, 0, 2.94652, 81.5991, 0.499985, -66.443)
+
+[node name="tree_rt_131" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(7.15256e-07, 0, -3, 0, 3, 0, 3, 0, 7.15256e-07, 80.7533, 0.499985, -59.4227)
+
+[node name="tree_rt_132" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-5.4473, 0, -3.145, 0, 6.29, 0, 3.145, 0, -5.4473, 83.1743, 0.499985, -100.053)
+
+[node name="tree_rt_133" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.08623, 0, 1.08078, 0, 3.27, 0, -1.08078, 0, -3.08623, 81.2989, 0.499985, -91.0345)
+
+[node name="tree_rt_134" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.08623, 0, 1.08078, 0, 3.27, 0, -1.08078, 0, -3.08623, 85.6286, 0.499985, -85.7419)
+
+[node name="tree_rt_135" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, 2.12132, 91.1908, 0.499985, -90.1079)
+
+[node name="tree_rt_136" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(3.145, 0, -5.4473, 0, 6.29, 0, 5.4473, 0, 3.145, 60.0046, 0.499985, -86.5854)
+
+[node name="tree_rt_137" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.08078, 0, -3.08623, 0, 3.27, 0, 3.08623, 0, -1.08078, 69.0229, 0.499985, -84.71)
+
+[node name="tree_rt_138" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.08078, 0, -3.08623, 0, 3.27, 0, 3.08623, 0, -1.08078, 74.3155, 0.499985, -89.0397)
+
+[node name="tree_rt_139" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, -2.12132, 69.9495, 0.499985, -94.6019)
+
+[node name="tree_rt_140" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-1.62797, 0, 6.07567, 0, 6.29, 0, -6.07567, 0, -1.62797, 109.914, 0.499985, -84.6569)
+
+[node name="tree_rt_141" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.84273, 0, 2.70134, 0, 3.27, 0, -2.70134, 0, 1.84273, 101.689, 0.499985, -88.8025)
+
+[node name="tree_rt_142" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.84273, 0, 2.70134, 0, 3.27, 0, -2.70134, 0, 1.84273, 95.4559, 0.499985, -85.9901)
+
+[node name="tree_rt_143" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, 1.5, 98.2335, 0.499985, -79.4875)
+
+[node name="tree_rt_144" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(3.21314, 0, 0.607129, 0, 3.27, 0, -0.607129, 0, 3.21314, 111.458, 0.499985, -74.3524)
+
+[node name="tree_rt_145" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(3.21314, 0, 0.607129, 0, 3.27, 0, -0.607129, 0, 3.21314, 105.062, 0.499985, -76.7711)
+
+[node name="tree_rt_146" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-0.776457, 0, -2.89778, 0, 3, 0, 2.89778, 0, -0.776457, 102.428, 0.499985, -70.2089)
+
+[node name="tree_rt_147" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(2.38419e-07, 0, -6.29, 0, 6.29, 0, 6.29, 0, 2.38419e-07, -91.5836, 0.499985, -81.761)
+
+[node name="tree_rt_148" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.4791, 0, -2.13236, 0, 3.27, 0, 2.13236, 0, -2.4791, -84.7113, 0.499985, -75.6276)
+
+[node name="tree_rt_149" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.4791, 0, -2.13236, 0, 3.27, 0, 2.13236, 0, -2.4791, -77.9629, 0.499985, -76.731)
+
+[node name="tree_rt_150" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-0.776457, 0, 2.89778, 0, 3, 0, -2.89778, 0, -0.776457, -78.9629, 0.499985, -83.731)
+
+[node name="tree_rt_151" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(6.29, 0, 2.38419e-07, 0, 6.29, 0, -2.38419e-07, 0, 6.29, -91.5054, 0.499985, -54.9617)
+
+[node name="tree_rt_152" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.13236, 0, -2.4791, 0, 3.27, 0, 2.4791, 0, 2.13236, -85.3721, 0.499985, -61.8341)
+
+[node name="tree_rt_153" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.13236, 0, -2.4791, 0, 3.27, 0, 2.4791, 0, 2.13236, -86.4754, 0.499985, -68.5825)
+
+[node name="tree_rt_154" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.89778, 0, -0.776457, 0, 3, 0, 0.776457, 0, -2.89778, -93.4755, 0.499985, -67.5825)
+
+[node name="tree_rt_155" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-6.07567, 0, 1.62797, 0, 6.29, 0, -1.62797, 0, -6.07567, -64.8804, 0.499985, -97.2206)
+
+[node name="tree_rt_156" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.41806, 0, 2.94652, 0, 3.27, 0, -2.94652, 0, -1.41806, -72.5834, 0.499985, -92.1698)
+
+[node name="tree_rt_157" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-1.41806, 0, 2.94652, 0, 3.27, 0, -2.94652, 0, -1.41806, -73.2642, 0.499985, -85.3658)
+
+[node name="tree_rt_158" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(3, 0, -1.54972e-06, 0, 3, 0, 1.54972e-06, 0, 3, -66.244, 0.499985, -84.52)
+
+[node name="tree_rt_159" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, -55.1844, 0.499985, -93.4055)
+
+[node name="tree_rt_160" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, -60.4771, 0.499985, -89.0757)
+
+[node name="tree_rt_161" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, 2.12132, -56.111, 0.499985, -83.5136)
+
+[node name="tree_rt_162" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-3.145, 0, -5.4473, 0, 6.29, 0, 5.4473, 0, -3.145, 13.8661, 0.499985, -103.97)
+
+[node name="tree_rt_163" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.21314, 0, -0.607133, 0, 3.27, 0, 0.607133, 0, -3.21314, 16.7511, 0.499985, -95.2218)
+
+[node name="tree_rt_164" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.21314, 0, -0.607133, 0, 3.27, 0, 0.607133, 0, -3.21314, 23.1471, 0.499985, -92.8031)
+
+[node name="tree_rt_165" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.776457, 0, 2.89778, 0, 3, 0, -2.89778, 0, 0.776457, 25.781, 0.499985, -99.3653)
+
+[node name="tree_rt_166" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(5.4473, 0, -3.145, 0, 6.29, 0, 3.145, 0, 5.4473, 0.534286, 0.499985, -80.7216)
+
+[node name="tree_rt_167" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.607133, 0, -3.21314, 0, 3.27, 0, 3.21314, 0, 0.607133, 9.28205, 0.499985, -83.6066)
+
+[node name="tree_rt_168" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.607133, 0, -3.21314, 0, 3.27, 0, 3.21314, 0, 0.607133, 11.7007, 0.499985, -90.0026)
+
+[node name="tree_rt_169" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, -2.89778, 5.13855, 0.499985, -92.6366)
+
+[node name="tree_rt_170" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-4.4477, 0, 4.4477, 0, 6.29, 0, -4.4477, 0, -4.4477, 44.7217, 0.499985, -104.006)
+
+[node name="tree_rt_171" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.245181, 0, 3.26079, 0, 3.27, 0, -3.26079, 0, 0.245181, 35.5253, 0.499985, -103.484)
+
+[node name="tree_rt_172" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.245181, 0, 3.26079, 0, 3.27, 0, -3.26079, 0, 0.245181, 31.5336, 0.499985, -97.9317)
+
+[node name="tree_rt_173" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.59808, 0, -1.5, 0, 3, 0, 1.5, 0, 2.59808, 37.1904, 0.499985, -93.6891)
+
+[node name="tree_rt_174" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.4791, 0, 2.13236, 0, 3.27, 0, -2.13236, 0, 2.4791, 51.2111, 0.499985, -95.8544)
+
+[node name="tree_rt_175" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.4791, 0, 2.13236, 0, 3.27, 0, -2.13236, 0, 2.4791, 44.4626, 0.499985, -94.7511)
+
+[node name="tree_rt_176" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(0.776458, 0, -2.89778, 0, 3, 0, 2.89778, 0, 0.776458, 45.4626, 0.499985, -87.751)
+
+[node name="tree_rt_177" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-4.4477, 0, -4.4477, 0, 6.29, 0, 4.4477, 0, -4.4477, -28.5461, 0.499985, -108.35)
+
+[node name="tree_rt_178" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.2608, 0, 0.245178, 0, 3.27, 0, -0.245178, 0, -3.2608, -28.0235, 0.499985, -99.1538)
+
+[node name="tree_rt_179" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-3.2608, 0, 0.245178, 0, 3.27, 0, -0.245178, 0, -3.2608, -22.4715, 0.499985, -95.1621)
+
+[node name="tree_rt_180" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.5, 0, 2.59808, 0, 3, 0, -2.59808, 0, 1.5, -18.2288, 0.499985, -100.819)
+
+[node name="tree_rt_181" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(4.4477, 0, -4.4477, 0, 6.29, 0, 4.4477, 0, 4.4477, -47.4406, 0.499985, -89.3449)
+
+[node name="tree_rt_182" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-0.245178, 0, -3.2608, 0, 3.27, 0, 3.2608, 0, -0.245178, -38.2443, 0.499985, -89.8675)
+
+[node name="tree_rt_183" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-0.245178, 0, -3.2608, 0, 3.27, 0, 3.2608, 0, -0.245178, -34.2526, 0.499985, -95.4196)
+
+[node name="tree_rt_184" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(-2.59808, 0, 1.5, 0, 3, 0, -1.5, 0, -2.59808, -39.9094, 0.499985, -99.6623)
+
+[node name="tree_rt_185" parent="floor" instance=ExtResource("2_ghwpb")]
+transform = Transform3D(-3.145, 0, 5.4473, 0, 6.29, 0, -5.4473, 0, -3.145, 1.26763, 0.499985, -100.4)
+
+[node name="tree_rt_186" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, -7.75066, 0.499985, -102.275)
+
+[node name="tree_rt_187" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(1.08078, 0, 3.08623, 0, 3.27, 0, -3.08623, 0, 1.08078, -13.0433, 0.499985, -97.9454)
+
+[node name="tree_rt_188" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, 2.12132, -8.67731, 0.499985, -92.3833)
+
+[node name="tree_rt_189" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.94652, 0, 1.41806, 0, 3.27, 0, -1.41806, 0, 2.94652, 5.42603, 0.499985, -90.846)
+
+[node name="tree_rt_190" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(2.94652, 0, 1.41806, 0, 3.27, 0, -1.41806, 0, 2.94652, -1.37804, 0.499985, -91.5269)
+
+[node name="tree_rt_191" parent="floor" instance=ExtResource("3_rvl1y")]
+transform = Transform3D(7.7486e-07, 0, -3, 0, 3, 0, 3, 0, 7.7486e-07, -2.22387, 0.499985, -84.5065)
+
+[node name="MovingEnemy" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8139, 0.5, 0.106064)
+
+[node name="MovingEnemy2" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3422, 0.5, 3.29963)
+
+[node name="MovingEnemy3" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0299, 0.5, -7.4409)
+
+[node name="MovingEnemy4" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0299, 0.5, -40.4409)
+
+[node name="MovingEnemy5" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0299, 0.5, -42.4409)
+
+[node name="MovingEnemy6" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.9257, 0.5, -36.1842)
+
+[node name="MovingEnemy7" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1449, 0.5, -41.1009)
+
+[node name="MovingEnemy8" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6796, 0.5, -34.2123)
+
+[node name="MovingEnemy9" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.6796, 0.5, -34.2123)
+
+[node name="MovingEnemy10" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6593, 0.5, -51.0022)
+
+[node name="MovingEnemy11" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7696, 0.5, -49.2384)
+
+[node name="MovingEnemy12" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3697, 0.5, -46.4138)
+
+[node name="MovingEnemy13" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4935, 0.5, -38.0424)
+
+[node name="MovingEnemy14" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.213, 0.5, -31.7341)
+
+[node name="MovingEnemy15" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7458, 0.5, -26.8008)
+
+[node name="MovingEnemy16" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7278, 0.5, -26.1706)
+
+[node name="MovingEnemy17" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7278, 0.5, -28.1706)
+
+[node name="MovingEnemy18" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.766, 0.5, 34.9586)
+
+[node name="MovingEnemy19" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8481, 0.5, 38.2669)
+
+[node name="MovingEnemy20" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2873, 0.5, 40.0373)
+
+[node name="MovingEnemy21" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2873, 0.5, 35.0373)
+
+[node name="MovingEnemy22" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4725, 0.5, 37.0803)
+
+[node name="MovingEnemy23" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.104, 0.5, 31.6839)
+
+[node name="MovingEnemy24" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.6067, 0.5, 0.626514)
+
+[node name="MovingEnemy25" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.6888, 0.5, 3.93481)
+
+[node name="MovingEnemy26" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.128, 0.5, 5.70518)
+
+[node name="MovingEnemy27" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.128, 0.5, 0.705185)
+
+[node name="MovingEnemy28" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.3132, 0.5, 2.74817)
+
+[node name="MovingEnemy29" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.9447, 0.5, -2.64823)
+
+[node name="MovingEnemy30" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 4.04013, 0.5, 12.4708)
+
+[node name="MovingEnemy31" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.591, 0.5, 14.8769)
+
+[node name="MovingEnemy32" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3.24394, 0.5, 14.1297)
+
+[node name="MovingEnemy33" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.47599, 0.5, 8.79961)
+
+[node name="MovingEnemy34" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -8.53325, 0.5, 7.66149)
+
+[node name="MovingEnemy35" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3.55606, 0.5, 4.30384)
+
+[node name="MovingEnemy36" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -28.9137, 0.5, 13.8605)
+
+[node name="MovingEnemy37" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -31.3628, 0.5, 16.2666)
+
+[node name="MovingEnemy38" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -36.1977, 0.5, 15.5194)
+
+[node name="MovingEnemy39" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -35.4298, 0.5, 10.1893)
+
+[node name="MovingEnemy40" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -41.487, 0.5, 9.05119)
+
+[node name="MovingEnemy41" parent="floor" instance=ExtResource("4_1sqy0")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -36.5099, 0.5, 5.69353)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r4m0p")
@@ -631,6 +1089,7 @@ metadata/extras = {
 }
 
 [node name="SignalBroadcast" type="Area3D" parent="Antenna/Cube"]
+script = ExtResource("7_xgds2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Antenna/Cube/SignalBroadcast"]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, -0.541611, 0)
@@ -671,7 +1130,7 @@ transform = Transform3D(0, 4.37114e-08, -1, 1, 0, 0, 0, -1, -4.37114e-08, 0, 285
 shape = SubResource("BoxShape3D_rvl1y")
 
 [node name="Player" parent="." instance=ExtResource("1_lru7s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6643, 0.999992, -23.7895)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -55.1195, 0.999992, -1.09471)
 
 [node name="flat_Lshape_brick" parent="." instance=ExtResource("4_kqh35")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -76.9837, 0, 6.96674)
@@ -868,3 +1327,4 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 [connection signal="body_entered" from="Antenna/RadioTower/LadderArea" to="Antenna/RadioTower/LadderArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Antenna/RadioTower/LadderArea" to="Antenna/RadioTower/LadderArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Antenna/RadioTower/UpareaEntered" to="Antenna/RadioTower/UpareaEntered" method="_on_body_entered"]
+[connection signal="body_entered" from="Antenna/Cube/SignalBroadcast" to="Antenna/Cube/SignalBroadcast" method="_on_body_entered"]

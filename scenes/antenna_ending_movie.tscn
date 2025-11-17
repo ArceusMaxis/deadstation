@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpo61y02nry6j"]
+
+[ext_resource type="Script" uid="uid://baw455sytw0ul" path="res://antenna_ending_movie.gd" id="1_2310s"]
+[ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_dlca7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvtq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5g8n"]
+bg_color = Color(0.391, 0, 0.46, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yvfd"]
+bg_color = Color(0.0153333, 0, 0.46, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfy5j"]
+bg_color = Color(0, 0.222333, 0.46, 1)
+
+[sub_resource type="Theme" id="Theme_1xxc8"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("2_dlca7")
+Button/styles/focus = SubResource("StyleBoxEmpty_3vvtq")
+Button/styles/hover = SubResource("StyleBoxFlat_s5g8n")
+Button/styles/normal = SubResource("StyleBoxFlat_7yvfd")
+Button/styles/pressed = SubResource("StyleBoxFlat_dfy5j")
+
+[node name="AntennaEndingMovie" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2310s")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+autoplay = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -38.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_1xxc8")
+text = "Back to Main Menu"
