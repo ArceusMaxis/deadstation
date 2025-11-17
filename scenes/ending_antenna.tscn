@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://baw60t5t565aw"]
+[gd_scene load_steps=46 format=4 uid="uid://baw60t5t565aw"]
 
 [ext_resource type="PackedScene" uid="uid://lqlucsvm48x" path="res://scenes/player.tscn" id="1_lru7s"]
 [ext_resource type="PackedScene" uid="uid://wcnbl14i6x6n" path="res://assets/trees/tree_rt_1.glb" id="2_ghwpb"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://sjiqmoyob8l6" path="res://scenes/buildings/flat_lshape.tscn" id="10_xgds2"]
 [ext_resource type="PackedScene" uid="uid://cpv0klkdogtoc" path="res://scenes/SideEntrance.blend" id="13_1sqy0"]
 [ext_resource type="Texture2D" uid="uid://3ospua4weikj" path="res://assets/mountain.png" id="13_e0wxf"]
+[ext_resource type="Script" uid="uid://ro2km6rspfhs" path="res://scenes/area_3d.gd" id="17_jltpp"]
 [ext_resource type="Script" uid="uid://cxiqucl821d2" path="res://scripts/ladder_area.gd" id="29_lru7s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jstk2"]
@@ -274,6 +275,9 @@ size = Vector3(40, 10.3, 40)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvl1y"]
 size = Vector3(21, 0.553711, 20.5479)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_88gg3"]
+size = Vector3(1.53003, 3.11035, 1.21484)
 
 [node name="TownAct2" type="Node3D"]
 
@@ -1324,7 +1328,15 @@ transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 
 [node name="flat_Lshape_large_alt9" parent="." instance=ExtResource("5_goi18")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 31, 0, -47)
 
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("17_jltpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.3333, 1.05518, -53.9253)
+shape = SubResource("BoxShape3D_88gg3")
+
 [connection signal="body_entered" from="Antenna/RadioTower/LadderArea" to="Antenna/RadioTower/LadderArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Antenna/RadioTower/LadderArea" to="Antenna/RadioTower/LadderArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Antenna/RadioTower/UpareaEntered" to="Antenna/RadioTower/UpareaEntered" method="_on_body_entered"]
 [connection signal="body_entered" from="Antenna/Cube/SignalBroadcast" to="Antenna/Cube/SignalBroadcast" method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

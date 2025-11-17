@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://v1hpbbiaxei4"]
+
+[ext_resource type="Texture2D" uid="uid://c8knx802pkg3h" path="res://scenes/textures/flat_square_concrete_houses.png" id="1_fsne8"]
+[ext_resource type="PackedScene" uid="uid://lqlucsvm48x" path="res://scenes/player.tscn" id="2_l75aq"]
+[ext_resource type="Texture2D" uid="uid://dmoquyn0c4eeo" path="res://assets/textures/leaves/concreteflatpixel.jpg" id="3_5yhyp"]
+[ext_resource type="Texture2D" uid="uid://dbbhtvs65b2e" path="res://assets/textures/leaves/ConcreteLayers.jpg" id="4_5yhyp"]
+[ext_resource type="Texture2D" uid="uid://b4aeb42vqes6i" path="res://assets/textures/leaves/fencetexture.jpg" id="5_o8cp0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8cp0"]
+albedo_texture = ExtResource("1_fsne8")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_o8cp0")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -7.79245, 4, -0.813995)
+text = "I LOVE YOUUUUUUUUU
+
+MY FAMILY
+AND FRIENDS"
+font_size = 200
+outline_size = 40
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 9.66737, 4, -0.626862)
+text = "THANK YOU
+FOR EVERYTHING"
+font_size = 200
+outline_size = 40
+
+[node name="Player" parent="." instance=ExtResource("2_l75aq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61822, 3, -6.80422)
+pixel_size = 0.001
+texture = ExtResource("3_5yhyp")
+region_enabled = true
+region_rect = Rect2(593.975, 980.417, 2331.88, 2347.74)
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.791922, 3, -6.80422)
+pixel_size = 0.003
+texture = ExtResource("4_5yhyp")
+region_enabled = true
+region_rect = Rect2(0, 257.348, 687, 766.405)
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05078, 3, -6.80422)
+pixel_size = 0.0026
+texture = ExtResource("5_o8cp0")
+region_rect = Rect2(0, 257.348, 687, 766.405)
