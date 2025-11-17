@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://lqlucsvm48x" path="res://scenes/player.tscn" id="1_2oeh4"]
 [ext_resource type="Texture2D" uid="uid://b4pyp3jjflecd" path="res://scenes/textures/ConcreteLayers.png" id="2_7y6gf"]
 [ext_resource type="PackedScene" uid="uid://dcs6bhhrsnb8n" path="res://scenes/moving_enemy.tscn" id="3_iynwi"]
-[ext_resource type="Script" uid="uid://drwouq12gnimh" path="res://scenes/mayor_movie_teleport.gd" id="4_iynwi"]
+[ext_resource type="Script" uid="uid://drwouq12gnimh" path="res://scripts/mayor_movie_teleport.gd" id="4_iynwi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofdaw"]
 albedo_texture = ExtResource("2_7y6gf")

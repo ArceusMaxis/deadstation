@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ltr683pkgkda"]
 
-[ext_resource type="Script" uid="uid://brclmq512qiuc" path="res://scenes/mayor_movie.gd" id="1_ak8tv"]
+[ext_resource type="Script" uid="uid://brclmq512qiuc" path="res://scripts/mayor_movie.gd" id="1_ak8tv"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_nv40n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvtq"]

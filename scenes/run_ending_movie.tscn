@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpo61y02nry6j"]
+[gd_scene load_steps=8 format=3 uid="uid://cerguihvwol16"]
 
-[ext_resource type="Script" uid="uid://baw455sytw0ul" path="res://scripts/antenna_ending_movie.gd" id="1_2310s"]
-[ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_dlca7"]
+[ext_resource type="Script" uid="uid://cin4woug4rbpj" path="res://scripts/run_ending_movie.gd" id="1_7ndwt"]
+[ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_ti42s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vvtq"]
 
@@ -16,20 +16,20 @@ bg_color = Color(0, 0.222333, 0.46, 1)
 
 [sub_resource type="Theme" id="Theme_1xxc8"]
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/fonts/font = ExtResource("2_dlca7")
+Button/fonts/font = ExtResource("2_ti42s")
 Button/styles/focus = SubResource("StyleBoxEmpty_3vvtq")
 Button/styles/hover = SubResource("StyleBoxFlat_s5g8n")
 Button/styles/normal = SubResource("StyleBoxFlat_7yvfd")
 Button/styles/pressed = SubResource("StyleBoxFlat_dfy5j")
 
-[node name="AntennaEndingMovie" type="Control"]
+[node name="RunEndingMovie" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2310s")
+script = ExtResource("1_7ndwt")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1

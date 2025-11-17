@@ -1,13 +1,13 @@
-[gd_scene load_steps=99 format=4 uid="uid://dknmcsdhol55x"]
+[gd_scene load_steps=98 format=4 uid="uid://r4ajh8iwet4l"]
 
-[ext_resource type="PackedScene" uid="uid://dq2i3qivclk2d" path="res://scenes/introplayer.tscn" id="1_fo6y7"]
-[ext_resource type="Script" uid="uid://1ivsxmcrjg1x" path="res://scripts/getready.gd" id="1_x3ub8"]
-[ext_resource type="Texture2D" uid="uid://pl7t0f2l7ndi" path="res://assets/textures/FenceTexture.png" id="3_10ohq"]
-[ext_resource type="Texture2D" uid="uid://l34hbi37g1du" path="res://assets/textures/tree_bark_rt_a_1.png" id="4_dlh8w"]
-[ext_resource type="Texture2D" uid="uid://duxnsos7tp88a" path="res://assets/textures/dead_tree_rt_1.png" id="5_1sn30"]
-[ext_resource type="Texture2D" uid="uid://djmddth6gd3ge" path="res://assets/textures/small_tree_rt_1.png" id="6_b8awc"]
-[ext_resource type="Texture2D" uid="uid://3ospua4weikj" path="res://assets/mountain.png" id="7_dlh8w"]
-[ext_resource type="PackedScene" uid="uid://2d7k7rpncvii" path="res://assets/TownHall.blend" id="8_1sn30"]
+[ext_resource type="PackedScene" uid="uid://dq2i3qivclk2d" path="res://scenes/introplayer.tscn" id="2_6ekdb"]
+[ext_resource type="Script" uid="uid://b1qaijp15pdrm" path="res://scenes/ending_movie_teleporter.gd" id="2_pafvq"]
+[ext_resource type="Texture2D" uid="uid://pl7t0f2l7ndi" path="res://assets/textures/FenceTexture.png" id="3_60we7"]
+[ext_resource type="Texture2D" uid="uid://l34hbi37g1du" path="res://assets/textures/tree_bark_rt_a_1.png" id="4_d472b"]
+[ext_resource type="Texture2D" uid="uid://duxnsos7tp88a" path="res://assets/textures/dead_tree_rt_1.png" id="5_nepcr"]
+[ext_resource type="Texture2D" uid="uid://djmddth6gd3ge" path="res://assets/textures/small_tree_rt_1.png" id="6_4dk5l"]
+[ext_resource type="Texture2D" uid="uid://3ospua4weikj" path="res://assets/mountain.png" id="7_1meyk"]
+[ext_resource type="PackedScene" uid="uid://2d7k7rpncvii" path="res://assets/TownHall.blend" id="8_aoby3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wv0d5"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,25 +22,10 @@ sky = SubResource("Sky_x3ub8")
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
+fog_density = 0.07
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3ub8"]
 size = Vector3(1, 4.34265, 55.418)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ivnf3"]
-size = Vector3(4.44595, 9.86908, 21.1074)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3hxc"]
-shading_mode = 0
-
-[sub_resource type="SphereMesh" id="SphereMesh_x3ub8"]
-material = SubResource("StandardMaterial3D_g3hxc")
-radial_segments = 4
-rings = 3
-
-[sub_resource type="Curve" id="Curve_g3hxc"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-metadata/_snap_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkh0i"]
 resource_name = "Blue"
@@ -867,6 +852,15 @@ shadow_mesh = SubResource("ArrayMesh_doplb")
 [sub_resource type="BoxShape3D" id="BoxShape3D_48o4h"]
 size = Vector3(0.362366, 0.906738, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ekdb"]
+albedo_color = Color(0, 0.262745, 0.462745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pafvq"]
+albedo_color = Color(0, 0.101961, 0.129412, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pafvq"]
+size = Vector3(14.3177, 5.49316, 5.29126)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxho2"]
 resource_name = "Black"
 cull_mode = 2
@@ -1189,7 +1183,7 @@ resource_name = "Fence"
 transparency = 4
 cull_mode = 2
 shading_mode = 0
-albedo_texture = ExtResource("3_10ohq")
+albedo_texture = ExtResource("3_60we7")
 metadata/extras = {
 "yp": {
 "active_ypaint_node": "",
@@ -1232,7 +1226,7 @@ shadow_mesh = SubResource("ArrayMesh_w1d61")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eswku"]
 resource_name = "tree_bark_rt_a_1"
 cull_mode = 2
-albedo_texture = ExtResource("4_dlh8w")
+albedo_texture = ExtResource("4_d472b")
 texture_filter = 2
 metadata/extras = {
 "yp": {
@@ -1247,7 +1241,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("5_1sn30")
+albedo_texture = ExtResource("5_nepcr")
 texture_filter = 2
 texture_repeat = false
 metadata/extras = {
@@ -1316,7 +1310,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("6_b8awc")
+albedo_texture = ExtResource("6_4dk5l")
 texture_filter = 2
 texture_repeat = false
 metadata/extras = {
@@ -1680,11 +1674,10 @@ data = PackedVector3Array(-0.9934, 0, 1, 0.9236, -0.0001, -0.9971, 1.0764, 0.000
 [sub_resource type="BoxShape3D" id="BoxShape3D_dlh8w"]
 size = Vector3(99.7925, 19.8441, 1)
 
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_x3ub8")
+[node name="EndingVanRun" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_fo6y7")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.22124, 1, 0.70629)
+[node name="Player" parent="." instance=ExtResource("2_6ekdb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -26.2547, 1, -1.19371)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2h5fk")
@@ -1696,27 +1689,8 @@ light_color = Color(0.748, 0.7986, 0.88, 1)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49046, 1.67133, -1.52014)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7446, 1.67133, -1.52014)
 shape = SubResource("BoxShape3D_x3ub8")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.638, 4.43454, -1.41602)
-shape = SubResource("BoxShape3D_ivnf3")
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-cast_shadow = 0
-amount = 2000
-lifetime = 2.0
-preprocess = 5.0
-mesh = SubResource("SphereMesh_x3ub8")
-emission_shape = 3
-emission_box_extents = Vector3(200, 200, 200)
-gravity = Vector3(0, -5, 0)
-initial_velocity_min = 8.0
-initial_velocity_max = 16.0
-scale_amount_curve = SubResource("Curve_g3hxc")
 
 [node name="Van" type="Node3D" parent="."]
 transform = Transform3D(0.345, 0, 0, 0, 0.345, 0, 0, 0, 0.345, 2.50745, 0.13227, 1.92524)
@@ -1802,6 +1776,25 @@ metadata/extras = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Van/Torch"]
 transform = Transform3D(0.848667, 0, 0.528927, 0, 1, 0, -0.528927, 0, 0.848667, 6.24483, 1.22135, 0.806288)
 shape = SubResource("BoxShape3D_48o4h")
+
+[node name="CSGMesh3D" type="CSGBox3D" parent="Van"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10531, 2.0358, 0)
+use_collision = true
+size = Vector3(0.0213623, 1.6189, 4.18848)
+material = SubResource("StandardMaterial3D_6ekdb")
+
+[node name="CSGMesh3D2" type="CSGBox3D" parent="Van"]
+transform = Transform3D(0.982693, -0.185238, 0, 0.185238, 0.982693, 0, 0, 0, 1, 6.92157, 3.60462, 0)
+use_collision = true
+size = Vector3(0.0213623, 1.6189, 4.18848)
+material = SubResource("StandardMaterial3D_pafvq")
+
+[node name="Area3D" type="Area3D" parent="Van"]
+script = ExtResource("2_pafvq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Van/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351402, 2.24658, 0)
+shape = SubResource("BoxShape3D_pafvq")
 
 [node name="StartingArea" type="Node3D" parent="."]
 transform = Transform3D(0.345, 0, 0, 0, 0.345, 0, 0, 0, 0.345, 0, 0, 0)
@@ -2550,53 +2543,53 @@ metadata/extras = {
 transform = Transform3D(3.24792, -0.28033, 0, 0.28033, 3.24792, 0, 0, 0, 3.26, 0, 40, 190)
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Mountains"]
 transform = Transform3D(3.2453, 0.309285, 0, -0.309285, 3.2453, 0, 0, 0, 3.26, 0, 40, -190)
 flip_h = true
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Mountains"]
 transform = Transform3D(-1.42499e-07, 0, -3.26, 0.482872, 3.22404, -2.1107e-08, 3.22404, -0.482872, -1.40927e-07, 190, 40, 0)
 flip_h = true
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="Sprite3D4" type="Sprite3D" parent="Mountains"]
 transform = Transform3D(-1.42499e-07, 0, -3.26, 0.503456, 3.22089, -2.20068e-08, 3.22089, -0.503456, -1.4079e-07, -190, 40, 0)
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="Sprite3D5" type="Sprite3D" parent="Mountains"]
 transform = Transform3D(2.30517, 0, 2.30517, -0.0520166, 3.25917, 0.0520166, -2.30458, -0.0735625, 2.30458, -145, 40, -145)
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="Sprite3D8" type="Sprite3D" parent="Mountains"]
 transform = Transform3D(2.30517, 0, -2.30517, 0.347648, 3.22271, 0.347648, 2.2788, -0.491648, 2.2788, 145, 40, -145)
 flip_h = true
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="Sprite3D6" type="Sprite3D" parent="Mountains"]
 transform = Transform3D(2.30517, 0, 2.30517, 0.346892, 3.22288, -0.346892, -2.27892, 0.490579, 2.27892, 145, 40, 145)
 flip_h = true
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="Sprite3D7" type="Sprite3D" parent="Mountains"]
 transform = Transform3D(2.28004, -0.480002, -2.28004, 0.339412, 3.22447, -0.339412, 2.30517, 0, 2.30517, -145, 40, 145)
 modulate = Color(0.37, 0.37, 0.37, 1)
 pixel_size = 0.1
-texture = ExtResource("7_dlh8w")
+texture = ExtResource("7_1meyk")
 
 [node name="FloorCol" type="StaticBody3D" parent="."]
 
@@ -2622,8 +2615,7 @@ shape = SubResource("BoxShape3D_dlh8w")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.2605, 0, -3.62794)
 shape = SubResource("BoxShape3D_dlh8w")
 
-[node name="TownHall" parent="." instance=ExtResource("8_1sn30")]
+[node name="TownHall" parent="." instance=ExtResource("8_aoby3")]
 transform = Transform3D(0.0666867, 0, 0, 0, 1, 0, 0, 0, 1, -168.16, 0.0187386, 5.5936)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="Van/Area3D" to="Van/Area3D" method="_on_body_entered"]
