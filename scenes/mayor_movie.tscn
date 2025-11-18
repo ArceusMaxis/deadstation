@@ -41,7 +41,6 @@ grow_vertical = 2
 autoplay = true
 
 [node name="antenna_ending" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -57,7 +56,6 @@ THE NEAREST ANTENNA
 (SUICIDE MISSION)"
 
 [node name="haul_ass_ending" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -73,4 +71,4 @@ grow_vertical = 2
 theme = SubResource("Theme_1xxc8")
 text = "HAUL ASS AND GET
 BACK TO HQ
-(MAYBE TOO LATE)"
+(TOO LATE? MAYBE?)"

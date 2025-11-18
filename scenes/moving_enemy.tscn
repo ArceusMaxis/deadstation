@@ -71,7 +71,7 @@ script = ExtResource("1_svblt")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 stream = ExtResource("2_lt0xm")
-volume_db = -10.0
+volume_db = -25.0
 autoplay = true
 max_distance = 20.0
 bus = &"AnRadio"

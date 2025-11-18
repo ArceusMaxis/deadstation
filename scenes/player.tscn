@@ -462,6 +462,8 @@ text = "[Here]"
 
 [node name="FlareAudio" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_3v2ag")
+volume_db = -35.0
 
 [node name="FlashAudio" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_jej6c")
+volume_db = -30.0
