@@ -31,9 +31,9 @@ func  _ready() -> void:
 	retryb.pressed.connect(get_tree().reload_current_scene)
 	hudlabel.visible = false
 	cursor.visible = true
-	animplayer.play("headbob")
 	losel.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	await get_tree().create_timer(1.0).timeout
 	if get_parent().name == "Act2":
 		hudlabel.visible = true
 		hudlabel.text = " Lure Untethered with Flare gun (E)"
@@ -90,13 +90,9 @@ func _physics_process(delta):
 	var input = Input.get_vector("left", "right", "forward", "back")
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y).normalized()
 	if movement_dir:
-		if animplayer.speed_scale != 1.0:
-			animplayer.speed_scale = 1.0
 		velocity.x = movement_dir.x * speed
 		velocity.z = movement_dir.z * speed
 	else:
-		if animplayer.speed_scale != 0.0:
-			animplayer.speed_scale = 0.0
 		velocity.x = movement_dir.x * speed
 		velocity.z = movement_dir.z * speed
 

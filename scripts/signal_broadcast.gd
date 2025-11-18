@@ -7,10 +7,6 @@ func _on_body_entered(body):
 		player = body
 		player.hudlabel.visible = true
 		player.hudlabel.text = " [Left Click] to Broadcast the 'Plan'"
-		await get_tree().create_timer(2).timeout
-		if player != null:
-			player.hudlabel.text = ""
-			player.hudlabel.visible = false
 
 func _input(event):
 	if player:

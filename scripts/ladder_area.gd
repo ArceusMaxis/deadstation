@@ -2,7 +2,7 @@ extends Area3D
 
 var player = null
 var is_climbing = false
-var climb_speed = 0.8
+var climb_speed = 2.4
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
