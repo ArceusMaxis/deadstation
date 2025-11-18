@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://lqlucsvm48x"]
+[gd_scene load_steps=44 format=3 uid="uid://lqlucsvm48x"]
 
 [ext_resource type="Script" uid="uid://b1cwrhnaxvid6" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="2_onrkg"]
@@ -10,6 +10,8 @@
 [ext_resource type="Shader" uid="uid://edgh5mr1jxhx" path="res://assets/portal.gdshader" id="5_fjrip"]
 [ext_resource type="Shader" uid="uid://bxg8otfoha6mr" path="res://assets/scanner.gdshader" id="6_y4r1p"]
 [ext_resource type="Script" uid="uid://ccygfv58fmt5g" path="res://scripts/pause_menu.gd" id="8_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://g0oloka4b2gq" path="res://assets/audio/flaregunsound.wav" id="11_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://cphlu1qnumwks" path="res://assets/audio/flashlight.mp3" id="11_d2wvv"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fjrip"]
 resource_local_to_scene = true
@@ -73,7 +75,7 @@ shader_parameter/cell_size = 100.0
 shader_parameter/move_speed = 0.5
 shader_parameter/distortion_amount = 0.3
 shader_parameter/distortion_speed = 1.0
-shader_parameter/color_shift_speed = 0.5
+shader_parameter/color_shift_speed = 3.0
 shader_parameter/spin_speed = -0.01
 shader_parameter/num_colors = 5
 shader_parameter/color_array = PackedColorArray(1, 1, 1, 1, 0.78, 0.78, 0.78, 1, 0.43, 0.43, 0.43, 1, 0.18, 0.18, 0.18, 1, 0.06, 0.06, 0.06, 1)
@@ -193,6 +195,17 @@ Button/styles/focus = SubResource("StyleBoxEmpty_smehm")
 Button/styles/hover = SubResource("StyleBoxFlat_ur7pv")
 Button/styles/normal = SubResource("StyleBoxFlat_y4r1p")
 Button/styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3v2ag"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("11_3v2ag")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jej6c"]
+random_pitch = 1.2
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("11_d2wvv")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4flbx")
@@ -446,3 +459,9 @@ offset_right = 176.0
 offset_bottom = 152.0
 theme = SubResource("Theme_3v2ag")
 text = "[Here]"
+
+[node name="FlareAudio" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_3v2ag")
+
+[node name="FlashAudio" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_jej6c")

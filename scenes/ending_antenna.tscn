@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://baw60t5t565aw"]
+[gd_scene load_steps=48 format=4 uid="uid://baw60t5t565aw"]
 
 [ext_resource type="PackedScene" uid="uid://lqlucsvm48x" path="res://scenes/player.tscn" id="1_lru7s"]
 [ext_resource type="PackedScene" uid="uid://wcnbl14i6x6n" path="res://assets/trees/tree_rt_1.glb" id="2_ghwpb"]
@@ -12,8 +12,10 @@
 [ext_resource type="Script" uid="uid://c0jan27t6msbs" path="res://scripts/signal_broadcast.gd" id="7_xgds2"]
 [ext_resource type="PackedScene" uid="uid://dl1a7jdg73rn1" path="res://scenes/buildings/flat_square_concrete.tscn" id="8_rvl1y"]
 [ext_resource type="PackedScene" uid="uid://cspcp74gd01ew" path="res://scenes/buildings/hangar_1.tscn" id="9_1sqy0"]
+[ext_resource type="Script" uid="uid://hefltu62e0ix" path="res://scenes/audio_mod.gd" id="9_y2fwx"]
+[ext_resource type="AudioStream" uid="uid://ln117gs3wetn" path="res://assets/audio/city.mp3" id="10_ebatb"]
 [ext_resource type="PackedScene" uid="uid://sjiqmoyob8l6" path="res://scenes/buildings/flat_lshape.tscn" id="10_xgds2"]
-[ext_resource type="PackedScene" uid="uid://cpv0klkdogtoc" path="res://scenes/SideEntrance.blend" id="13_1sqy0"]
+[ext_resource type="PackedScene" uid="uid://cpv0klkdogtoc" path="res://assets/SideEntrance.blend" id="13_1sqy0"]
 [ext_resource type="Texture2D" uid="uid://3ospua4weikj" path="res://assets/mountain.png" id="13_e0wxf"]
 [ext_resource type="Script" uid="uid://ro2km6rspfhs" path="res://scenes/area_3d.gd" id="17_jltpp"]
 [ext_resource type="Script" uid="uid://cxiqucl821d2" path="res://scripts/ladder_area.gd" id="29_lru7s"]
@@ -279,7 +281,7 @@ size = Vector3(21, 0.553711, 20.5479)
 [sub_resource type="BoxShape3D" id="BoxShape3D_88gg3"]
 size = Vector3(1.53003, 3.11035, 1.21484)
 
-[node name="TownAct2" type="Node3D"]
+[node name="AntennaEnding" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.756538, -0.2228, 0.614825, -0.231386, 0.788153, 0.57033, -0.611646, -0.573738, 0.544715, 0, 0, 0)
@@ -1135,6 +1137,15 @@ shape = SubResource("BoxShape3D_rvl1y")
 
 [node name="Player" parent="." instance=ExtResource("1_lru7s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -55.1195, 0.999992, -1.09471)
+
+[node name="AudioMod" type="Node3D" parent="Player"]
+transform = Transform3D(-0.5, 1.77422e-08, 0.866025, 0.433013, 0.866025, 0.25, -0.75, 0.5, -0.433013, 0, 0, 0)
+script = ExtResource("9_y2fwx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/AudioMod"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+stream = ExtResource("10_ebatb")
+autoplay = true
 
 [node name="flat_Lshape_brick" parent="." instance=ExtResource("4_kqh35")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -76.9837, 0, 6.96674)

@@ -22,6 +22,8 @@ var mouse_sensitivity = 0.008
 @onready var led_4: CSGMesh3D = $Camera3D/Hand/Scanner/LED4
 @onready var led_5: CSGMesh3D = $Camera3D/Hand/Scanner/LED5
 @onready var retryb: Button = $CanvasLayer/losel/retryb
+@onready var flare_audio: AudioStreamPlayer3D = $FlareAudio
+@onready var flash_audio: AudioStreamPlayer3D = $FlashAudio
 
 @export var bullet_scn : PackedScene
 
@@ -40,8 +42,6 @@ func  _ready() -> void:
 		await get_tree().create_timer(2).timeout
 		hudlabel.text = " Don't try to fight the Untethered, its useless"
 		await get_tree().create_timer(2).timeout
-		hudlabel.text = " Goodluck, Charter 7"
-		await get_tree().create_timer(2).timeout
 		hudlabel.visible = false
 	
 	if get_parent().name == "Act3":
@@ -51,6 +51,36 @@ func  _ready() -> void:
 		hudlabel.text = " Gonna have to use the flashlight"
 		await get_tree().create_timer(2).timeout
 		hudlabel.text = " And continue to scan for the signal"
+		await get_tree().create_timer(2).timeout
+		hudlabel.visible = false
+		
+	if get_parent().name == "AntennaEnding":
+		hudlabel.visible = true
+		hudlabel.text = " I hope i can get the message out"
+		await get_tree().create_timer(3).timeout
+		hudlabel.text = " Must get to the antenna quickly"
+		await get_tree().create_timer(2).timeout
+		hudlabel.text = " This doesn't seem like its gonna end well..."
+		await get_tree().create_timer(2).timeout
+		hudlabel.visible = false
+		
+	if get_parent().name == "RunEnding":
+		hudlabel.visible = true
+		hudlabel.text = " I must make it back alive"
+		await get_tree().create_timer(3).timeout
+		hudlabel.text = " HQ is gonna go crazy with this"
+		await get_tree().create_timer(2).timeout
+		hudlabel.text = " No time for excuses anymore"
+		await get_tree().create_timer(2).timeout
+		hudlabel.visible = false
+		
+	if get_parent().name == "EndingVanRun":
+		hudlabel.visible = true
+		hudlabel.text = " Run!!"
+		await get_tree().create_timer(2).timeout
+		hudlabel.text = " Get to the van!"
+		await get_tree().create_timer(2).timeout
+		hudlabel.text = " Quick!"
 		await get_tree().create_timer(2).timeout
 		hudlabel.visible = false
 
@@ -82,6 +112,7 @@ func _input(event):
 		cam.rotate_x(-event.relative.y * mouse_sensitivity)
 		cam.rotation.x = clampf(cam.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 	if event.is_action_pressed("flashlight") and flashlight and flashlightmodel:
+		flash_audio.play()
 		flashlight.visible = !flashlight.visible
 		flashlightmodel.visible = flashlight.visible
 		if flashlight.visible and scannermodel and flaregunmodel:
@@ -107,6 +138,7 @@ func _input(event):
 				scannermodel.visible = false
 	if event.is_action_pressed("fire") and flaregunmodel.visible and bullet_scn and can_shoot:
 		can_shoot = false
+		flare_audio.play()
 		var bullet = bullet_scn.instantiate()
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = muzzle.global_position

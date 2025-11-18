@@ -1,6 +1,5 @@
-[gd_scene load_steps=98 format=4 uid="uid://r4ajh8iwet4l"]
+[gd_scene load_steps=101 format=4 uid="uid://r4ajh8iwet4l"]
 
-[ext_resource type="PackedScene" uid="uid://dq2i3qivclk2d" path="res://scenes/introplayer.tscn" id="2_6ekdb"]
 [ext_resource type="Script" uid="uid://b1qaijp15pdrm" path="res://scenes/ending_movie_teleporter.gd" id="2_pafvq"]
 [ext_resource type="Texture2D" uid="uid://pl7t0f2l7ndi" path="res://assets/textures/FenceTexture.png" id="3_60we7"]
 [ext_resource type="Texture2D" uid="uid://l34hbi37g1du" path="res://assets/textures/tree_bark_rt_a_1.png" id="4_d472b"]
@@ -8,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://djmddth6gd3ge" path="res://assets/textures/small_tree_rt_1.png" id="6_4dk5l"]
 [ext_resource type="Texture2D" uid="uid://3ospua4weikj" path="res://assets/mountain.png" id="7_1meyk"]
 [ext_resource type="PackedScene" uid="uid://2d7k7rpncvii" path="res://assets/TownHall.blend" id="8_aoby3"]
+[ext_resource type="AudioStream" uid="uid://t7stnjw6ind5" path="res://assets/audio/winterbg.mp3" id="9_6ekdb"]
+[ext_resource type="PackedScene" uid="uid://lqlucsvm48x" path="res://scenes/player.tscn" id="9_60we7"]
+[ext_resource type="AudioStream" uid="uid://ca25cy1hvuwl8" path="res://assets/audio/car_alarm.mp3" id="9_d472b"]
+[ext_resource type="PackedScene" uid="uid://1rrolpbwm7x0" path="res://scenes/standing_enemy.tscn" id="10_d472b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wv0d5"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -859,7 +862,7 @@ albedo_color = Color(0, 0.262745, 0.462745, 1)
 albedo_color = Color(0, 0.101961, 0.129412, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pafvq"]
-size = Vector3(14.3177, 5.49316, 5.29126)
+size = Vector3(14.3177, 5.49316, 6.65979)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxho2"]
 resource_name = "Black"
@@ -1676,9 +1679,6 @@ size = Vector3(99.7925, 19.8441, 1)
 
 [node name="EndingVanRun" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("2_6ekdb")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -26.2547, 1, -1.19371)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2h5fk")
 
@@ -1793,7 +1793,7 @@ material = SubResource("StandardMaterial3D_pafvq")
 script = ExtResource("2_pafvq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Van/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351402, 2.24658, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351402, 2.24658, -0.684265)
 shape = SubResource("BoxShape3D_pafvq")
 
 [node name="StartingArea" type="Node3D" parent="."]
@@ -1887,7 +1887,7 @@ metadata/extras = {
 }
 
 [node name="dead_tree_rt_1_006" type="MeshInstance3D" parent="StartingArea/dead_tree_rt_1_007"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9689, -0.476648, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 6.65079, -0.304761, 0)
 mesh = SubResource("ArrayMesh_0fibb")
 skeleton = NodePath("")
 metadata/extras = {
@@ -2617,5 +2617,37 @@ shape = SubResource("BoxShape3D_dlh8w")
 
 [node name="TownHall" parent="." instance=ExtResource("8_aoby3")]
 transform = Transform3D(0.0666867, 0, 0, 0, 1, 0, 0, 0, 1, -168.16, 0.0187386, 5.5936)
+
+[node name="envbg" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.6746, 0, 0)
+stream = ExtResource("9_6ekdb")
+autoplay = true
+panning_strength = 5.0
+
+[node name="envbg3" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19899, 0.695933, 1.70911)
+stream = ExtResource("9_d472b")
+volume_db = -10.0
+pitch_scale = 1.3
+autoplay = true
+max_distance = 14.15
+
+[node name="envbg2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.377, 0, 9.54079)
+stream = ExtResource("9_6ekdb")
+pitch_scale = 0.8
+autoplay = true
+
+[node name="Player" parent="." instance=ExtResource("9_60we7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.0122, 0.999657, 0)
+
+[node name="StandingEnemy" parent="." instance=ExtResource("10_d472b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1631, 0, -0.962026)
+
+[node name="StandingEnemy2" parent="." instance=ExtResource("10_d472b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.9049, 0, -2.52584)
+
+[node name="StandingEnemy3" parent="." instance=ExtResource("10_d472b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.133, 0, 2.687)
 
 [connection signal="body_entered" from="Van/Area3D" to="Van/Area3D" method="_on_body_entered"]
