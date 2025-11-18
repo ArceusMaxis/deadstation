@@ -476,6 +476,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="Fade" type="ColorRect" parent="."]
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
 visible = false
@@ -529,13 +539,3 @@ volume_db = -35.0
 [node name="FlashAudio" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_jej6c")
 volume_db = -30.0
-
-[node name="Fade" type="ColorRect" parent="."]
-z_as_relative = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(0, 0, 0, 1)
