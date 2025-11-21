@@ -1,13 +1,72 @@
-[gd_scene load_steps=99 format=4 uid="uid://dknmcsdhol55x"]
+[gd_scene load_steps=111 format=4 uid="uid://dknmcsdhol55x"]
 
-[ext_resource type="PackedScene" uid="uid://dq2i3qivclk2d" path="res://scenes/introplayer.tscn" id="1_fo6y7"]
 [ext_resource type="Script" uid="uid://1ivsxmcrjg1x" path="res://scripts/getready.gd" id="1_x3ub8"]
+[ext_resource type="Script" uid="uid://c0nakghyit45s" path="res://scripts/introplayer.gd" id="2_e27h2"]
+[ext_resource type="PackedScene" uid="uid://uthu60gykj3" path="res://scenes/introscene_pickerray.tscn" id="3_1bxya"]
+[ext_resource type="AudioStream" uid="uid://t7stnjw6ind5" path="res://assets/audio/winterbg.mp3" id="3_6dphy"]
 [ext_resource type="Texture2D" uid="uid://pl7t0f2l7ndi" path="res://assets/textures/FenceTexture.png" id="3_10ohq"]
+[ext_resource type="FontFile" uid="uid://mew2cucdacle" path="res://assets/monofonto rg.otf" id="4_4pdmm"]
 [ext_resource type="Texture2D" uid="uid://l34hbi37g1du" path="res://assets/textures/tree_bark_rt_a_1.png" id="4_dlh8w"]
+[ext_resource type="AudioStream" uid="uid://cphlu1qnumwks" path="res://assets/audio/flashlight.mp3" id="4_uxetr"]
 [ext_resource type="Texture2D" uid="uid://duxnsos7tp88a" path="res://assets/textures/dead_tree_rt_1.png" id="5_1sn30"]
+[ext_resource type="Shader" uid="uid://ds7ko3t07i5ly" path="res://assets/colorclamp.gdshader" id="5_egvu1"]
 [ext_resource type="Texture2D" uid="uid://djmddth6gd3ge" path="res://assets/textures/small_tree_rt_1.png" id="6_b8awc"]
 [ext_resource type="Texture2D" uid="uid://3ospua4weikj" path="res://assets/mountain.png" id="7_dlh8w"]
 [ext_resource type="PackedScene" uid="uid://2d7k7rpncvii" path="res://assets/TownHall.blend" id="8_1sn30"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
+size = Vector3(0.3, 0.4, 0.1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+radius = 0.3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
+bg_color = Color(0.0153333, 0, 0.46, 1)
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+resource_name = "headbob"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(-0.05, 0.65, 0), Vector3(0, 0.7, 0), Vector3(0.05, 0.65, 0), Vector3(0, 0.7, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3pqv"]
+_data = {
+&"RESET": SubResource("Animation_onrkg"),
+&"headbob": SubResource("Animation_4flbx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dn2wa"]
+shader = ExtResource("5_egvu1")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wv0d5"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -1683,8 +1742,135 @@ size = Vector3(99.7925, 19.8441, 1)
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_x3ub8")
 
-[node name="Player" parent="." instance=ExtResource("1_fo6y7")]
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.22124, 1, 0.70629)
+script = ExtResource("2_e27h2")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Flashlight" type="SpotLight3D" parent="Player/Camera3D"]
+visible = false
+light_color = Color(1, 0.633333, 0, 1)
+spot_range = 8.0
+spot_angle = 20.0
+
+[node name="HoldScannerPoint" type="Marker3D" parent="Player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, -0.415, -0.685)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Player/Camera3D/HoldScannerPoint"]
+visible = false
+mesh = SubResource("BoxMesh_4flbx")
+
+[node name="RayCast3D" parent="Player/Camera3D" instance=ExtResource("3_1bxya")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_onrkg")
+debug_color = Color(0, 0.595, 0.7, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="winl" type="Label" parent="Player/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "YOU ESCAPED!"
+horizontal_alignment = 1
+
+[node name="losel" type="Label" parent="Player/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "YOU DIED FROM THE RABID BITES
+OF A DISEASED DEAD GUY. RIP."
+horizontal_alignment = 1
+
+[node name="hudlabel" type="Label" parent="Player/CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.859
+anchor_right = 0.967
+anchor_bottom = 0.948
+offset_left = 0.16
+offset_top = 0.0699921
+offset_right = -0.160034
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_4pdmm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3pqv")
+text = "test text goes here zebra"
+
+[node name="Label" type="Label" parent="Player/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
+theme_override_fonts/font = ExtResource("4_4pdmm")
+theme_override_font_sizes/font_size = 16
+text = "-•-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HipScannerPoint" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_i3pqv")
+}
+autoplay = "headbob"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
+
+[node name="ColorRect" type="ColorRect" parent="Player/CanvasLayer2"]
+material = SubResource("ShaderMaterial_dn2wa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17233e-07, 0, 5)
+stream = ExtResource("3_6dphy")
+autoplay = true
+stream_paused = true
+bus = &"Env"
+
+[node name="PickAudio" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78814e-07, 0, 1.43447)
+stream = ExtResource("4_uxetr")
+pitch_scale = 0.3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2h5fk")

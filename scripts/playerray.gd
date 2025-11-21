@@ -63,6 +63,7 @@ func _input(event: InputEvent) -> void:
 		var msg := _collect_message_for(_hovered)
 		_mark_collected(_hovered)
 		if is_instance_valid(_hovered):
+			get_parent().get_parent().get_child(-1).play()
 			_hovered.queue_free()
 		_hovered = null
 		_show_timed(msg)

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://hefltu62e0ix" path="res://scenes/audio_mod.gd" id="2_hl6fn"]
 [ext_resource type="PackedScene" uid="uid://b03qquossui0e" path="res://scenes/roads/road_1_straight.tscn" id="2_nmorr"]
 [ext_resource type="PackedScene" uid="uid://bs7wvyp5jklws" path="res://scenes/roads/road_1_junction.tscn" id="3_hl6fn"]
-[ext_resource type="AudioStream" uid="uid://ln117gs3wetn" path="res://assets/audio/city.mp3" id="3_mej0b"]
+[ext_resource type="AudioStream" uid="uid://t7stnjw6ind5" path="res://assets/audio/winterbg.mp3" id="3_mej0b"]
 [ext_resource type="PackedScene" uid="uid://ddn8hix0u7v0n" path="res://scenes/roads/road_1_corner.tscn" id="4_mej0b"]
 [ext_resource type="PackedScene" uid="uid://sjiqmoyob8l6" path="res://scenes/buildings/flat_lshape.tscn" id="5_s2r4e"]
 [ext_resource type="PackedScene" uid="uid://cx5vxmdmnfwic" path="res://scenes/buildings/flat_square_brick.tscn" id="6_oastc"]
@@ -545,7 +545,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16, 31)
 script = ExtResource("2_hl6fn")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/AudioMod"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 stream = ExtResource("3_mej0b")
 autoplay = true
 bus = &"Env"

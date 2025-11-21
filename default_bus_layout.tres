@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://crk7b76bd3wcl"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://crk7b76bd3wcl"]
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_j3pel"]
 resource_name = "Amplify"
@@ -41,9 +41,6 @@ keep_hf_hz = 17755.0
 drive = 0.04
 post_gain = 14.31
 
-[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_j3pel"]
-resource_name = "HighPassFilter"
-
 [resource]
 bus/1/name = &"AnRadio"
 bus/1/solo = false
@@ -57,13 +54,11 @@ bus/2/name = &"Env"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -10.0692
+bus/2/volume_db = -18.3165
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
-bus/2/effect/0/enabled = true
+bus/2/effect/0/enabled = false
 bus/2/effect/1/effect = SubResource("AudioEffectChorus_j3pel")
 bus/2/effect/1/enabled = true
 bus/2/effect/2/effect = SubResource("AudioEffectDistortion_j3pel")
 bus/2/effect/2/enabled = true
-bus/2/effect/3/effect = SubResource("AudioEffectHighPassFilter_j3pel")
-bus/2/effect/3/enabled = true

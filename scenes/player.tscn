@@ -259,7 +259,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_y4r1p")
 Button/styles/pressed = SubResource("StyleBoxFlat_d2wvv")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3v2ag"]
-random_pitch = 1.2
+random_pitch = 1.15
 streams_count = 1
 stream_0/stream = ExtResource("11_3v2ag")
 
@@ -533,9 +533,10 @@ theme = SubResource("Theme_3v2ag")
 text = "[Here]"
 
 [node name="FlareAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.414681, 0.275087, -0.685319)
 stream = SubResource("AudioStreamRandomizer_3v2ag")
-volume_db = -35.0
+volume_db = -29.0
 
 [node name="FlashAudio" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_jej6c")
-volume_db = -30.0
+volume_db = -11.0

@@ -23,6 +23,7 @@ func _on_body_exited(body):
 func _input(event):
 	if player and not is_climbing:
 		if event.is_action_pressed("fire"):
+			$"../../../Player/Buildup".play()
 			start_climbing()
 	
 	if is_climbing:

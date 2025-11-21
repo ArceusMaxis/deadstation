@@ -2627,10 +2627,9 @@ panning_strength = 5.0
 [node name="envbg3" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19899, 0.695933, 1.70911)
 stream = ExtResource("9_d472b")
-volume_db = -32.5
+volume_db = -22.5
 pitch_scale = 1.3
 autoplay = true
-max_distance = 14.15
 
 [node name="envbg2" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.377, 0, 9.54079)

@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/winterbg.mp3-de7755817a792802d23cc038105e34a5
 [params]
 
 loop=true
-loop_offset=0
-bpm=0
+loop_offset=5.0
+bpm=0.0
 beat_count=0
 bar_beats=4
